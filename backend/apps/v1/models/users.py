@@ -4,7 +4,7 @@ from pymongo import ReturnDocument
 import time
 import uuid
 
-
+from internal.db import get_next_sequence
 from config import DB
 
 ####################
@@ -43,7 +43,7 @@ class ExitSurvey(BaseModel):
 
 
 class UserModel(BaseModel):
-    id: str
+    id: int
     external_id: Optional[str] = None
     email: str
     name: str = ""
@@ -69,10 +69,11 @@ class UsersTable:
         self.table = db.users
 
     def insert_new_user(self, form_data: UserSignUpForm) -> Optional[UserModel]:
+        user_id = get_next_sequence("user_id")
         user = UserModel(
             **{
                 **form_data.model_dump(exclude_none=True),
-                "id": str(uuid.uuid4()),
+                "id": user_id,
                 "createdAt": int(time.time()),
             }
         )

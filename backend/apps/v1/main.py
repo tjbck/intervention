@@ -20,6 +20,9 @@ import requests
 import hashlib
 import json
 
+from apps.v1.routers import usage
+from apps.v1.routers import users
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -28,3 +31,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(users.router, prefix="/users", tags=["users"])
+app.include_router(usage.router, prefix="/usage", tags=["usage"])

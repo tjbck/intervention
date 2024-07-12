@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Gradual Grayscale",
+  "name": "Intervention V0 (Tangent Lab)",
   "description": "With every touch, it gradually transforms your screen to grayscale",
   "version": "1.0",
   "icons": {
@@ -15,10 +15,11 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.tiktok.com/*"
+        "<all_urls>"
       ],
       "js": [
-        "index.js"
+        "content.js",
+        "frontend/dist/main.js"
       ]
     }
   ],
@@ -28,7 +29,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "pages/js/index.js"
+        "frontend/dist/*"
       ],
       "matches": [
         "<all_urls>"
@@ -36,6 +37,7 @@
     }
   ],
   "permissions": [
-    "storage"
+    "storage",
+    "scripting"
   ]
 }

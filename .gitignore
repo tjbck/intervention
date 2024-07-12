@@ -3,3 +3,4 @@ __pycache__
 .vscode
 _barebone
 .ipynb_checkpoints
+node_modules

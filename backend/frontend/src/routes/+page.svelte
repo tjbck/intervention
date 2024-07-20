@@ -214,72 +214,68 @@
 				showConfirm = true;
 			}}
 		>
-			<div class=" tw-my-6">
-				<label for="date" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900">Date</label>
+			<div class=" my-6">
+				<label for="date" class="block mb-2 text-sm text-gray-900">Date</label>
 				<input
 					disabled
 					type="date"
 					id="date"
 					bind:value={formData.date}
-					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
+					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
 					required
 				/>
 			</div>
 
-			<div class=" tw-my-6">
-				<label for="name" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
-					>Participant Name</label
-				>
+			<div class=" my-6">
+				<label for="name" class="block mb-2 text-sm text-gray-900">Participant Name</label>
 				<input
 					type="text"
 					id="name"
 					bind:value={formData.name}
-					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
+					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
 					placeholder="Your full name"
 					required
 					autocomplete="name"
 				/>
-				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
+				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" tw-my-6">
-				<label for="email" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
-					>Participant Email</label
-				>
+			<div class=" my-6">
+				<label for="email" class="block mb-2 text-sm text-gray-900">Participant Email</label>
 				<input
 					type="email"
 					id="email"
 					bind:value={formData.email}
-					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
+					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
 					placeholder="Your email address"
 					required
 					autocomplete="email"
 				/>
-				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
+				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<!-- <div class=" tw-my-6">
-				<label for="name" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
+			<!-- <div class=" my-6">
+				<label for="name" class="block mb-2 text-sm text-gray-900"
 					>Participant ID (Prolific ID)</label
 				>
 				<input
 					type="text"
 					bind:value={formData.externalId}
-					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
+					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
 					placeholder="Your participant ID"
 					required
 				/>
-				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
+				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div> -->
 
-			<div class=" tw-my-6">
-				<label for="email" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900">Consent Form</label>
+			<div class=" my-6">
+				<label for="email" class="block mb-2 text-sm text-gray-900">Consent Form</label>
 
 				<div class=" text-sm text-purple-900 underline">
 					<a
@@ -301,12 +297,12 @@
 						and responsibilities as a participant.
 					</div>
 				</div>
-				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
+				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" tw-my-6">
+			<div class=" my-6">
 				<div class="flex text-sm text-gray-600">
 					<input
 						type="radio"
@@ -335,7 +331,7 @@
 					</div>
 				</div>
 
-				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
+				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>

@@ -99,453 +99,497 @@
 		</div>
 	{:else}
 		<form on:submit|preventDefault={submitHandler}>
-			<div class=" my-6">
-				<label for="date" class="block mb-2 text-sm text-gray-900">Date</label>
+			<div class=" tw-my-6">
+				<label for="date" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900">Date</label>
 				<input
 					disabled
 					type="date"
 					id="date"
 					bind:value={formData.date}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
+					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
 					required
 				/>
 			</div>
 
-			<div class=" my-6">
-				<label for="email" class="block mb-2 text-sm text-gray-900">Participant Email</label>
+			<div class=" tw-my-6">
+				<label for="email" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
+					>Participant Email</label
+				>
 				<input
 					type="email"
 					id="email"
 					bind:value={formData.email}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
+					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
 					placeholder="Your email address"
 					required
 					autocomplete="email"
 				/>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="age" class="block mb-2 text-sm text-gray-900">Age</label>
+			<div class=" tw-my-6">
+				<label for="age" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900">Age</label>
 				<input
 					type="number"
 					id="age"
 					bind:value={formData.age}
 					min="0"
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
+					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
 					placeholder="Your age"
 					required
 					autocomplete="off"
 				/>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="gender" class="block mb-2 text-sm text-gray-900">Gender</label>
-				<div id="gender" class="mt-5">
-					<div class="flex items-center mb-2">
+			<div class=" tw-my-6">
+				<label for="gender" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900">Gender</label>
+				<div id="gender" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.gender}
 							value={'M'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Man</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Man</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.gender}
 							value={'F'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Woman</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Woman</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.gender}
 							value={'N'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Non-binary</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Non-binary
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.gender}
 							value={'O'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Other</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Other</div>
 					</div>
-					<div class="flex items-center">
+					<div class="tw-flex tw-items-center">
 						<input
 							type="radio"
 							bind:group={formData.gender}
 							value={'NA'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Prefer not to answer</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Prefer not to answer
+						</div>
 					</div>
 				</div>
 
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="race" class="block mb-2 text-sm text-gray-900"
+			<div class=" tw-my-6">
+				<label for="race" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>What is your race?<br /> (One or more categories may be selected)
 				</label>
 
-				<div id="race" class="mt-5">
-					<div class="flex items-center mb-2">
+				<div id="race" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'B'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Black</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Black</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'EA'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">East/Southeast Asian</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							East/Southeast Asian
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'I'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Indigenous</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Indigenous
+						</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'L'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Latino</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Latino</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'M'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Middle Eastern</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Middle Eastern
+						</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'SA'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">South Asian</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							South Asian
+						</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'W'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">White</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">White</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'O'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Other</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Other</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="checkbox"
 							bind:group={formData.race}
 							value={'NA'}
 							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Prefer not to say</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Prefer not to say
+						</div>
 					</div>
 				</div>
 
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="income-bracket" class="block mb-2 text-sm text-gray-900"
+			<div class=" tw-my-6">
+				<label for="income-bracket" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>Which of these describes your income last year?
 				</label>
-				<div id="income-bracket" class="mt-5">
-					<div class="flex items-center mb-2">
+				<div id="income-bracket" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'0'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$0 to $9,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$0 to $9,999
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'10'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$10,000 to $24,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$10,000 to $24,999
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'25'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$25,000 to 49,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$25,000 to 49,999
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'50'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$50,000 to 74,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$50,000 to 74,999
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'75'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$75,000 to 99,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$75,000 to 99,999
+						</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'100'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$100,000 to 149,999</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$100,000 to 149,999
+						</div>
 					</div>
 
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'150'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$150,000 and greater</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							$150,000 and greater
+						</div>
 					</div>
 
-					<div class="flex items-center">
+					<div class="tw-flex tw-items-center">
 						<input
 							type="radio"
 							bind:group={formData.income_bracket}
 							value={'NA'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Prefer not to answer</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Prefer not to answer
+						</div>
 					</div>
 				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="app-usage-frequency" class="block mb-2 text-sm text-gray-900"
+			<div class=" tw-my-6">
+				<label for="app-usage-frequency" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>How often do you use TikTok?
 				</label>
-				<div id="app-usage-frequency" class="mt-5">
-					<div class="flex items-center mb-2">
+				<div id="app-usage-frequency" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.app_usage_frequency}
 							value={'1'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Never</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Never</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.app_usage_frequency}
 							value={'2'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Infrequently</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Infrequently
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.app_usage_frequency}
 							value={'3'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">A moderate amount</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							A moderate amount
+						</div>
 					</div>
-					<div class="flex items-center">
+					<div class="tw-flex tw-items-center">
 						<input
 							type="radio"
 							bind:group={formData.app_usage_frequency}
 							value={'4'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Frequently</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Frequently
+						</div>
 					</div>
 				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
-			<div class=" my-6">
-				<label for="mindless-usage-frequency" class="block mb-2 text-sm text-gray-900"
+			<div class=" tw-my-6">
+				<label for="mindless-usage-frequency" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>How often do you catch yourself consuming content on TikTok without being aware of what
 					you are doing?
 				</label>
-				<div id="mindless-usage-frequency" class="mt-5">
-					<div class="flex items-center mb-2">
+				<div id="mindless-usage-frequency" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.mindless_usage_frequency}
 							value={'1'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Never</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">Never</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.mindless_usage_frequency}
 							value={'2'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Infrequently</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Infrequently
+						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.mindless_usage_frequency}
 							value={'3'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">A moderate amount</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							A moderate amount
+						</div>
 					</div>
-					<div class="flex items-center">
+					<div class="tw-flex tw-items-center">
 						<input
 							type="radio"
 							bind:group={formData.mindless_usage_frequency}
 							value={'4'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Frequently</div>
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
+							Frequently
+						</div>
 					</div>
 				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
-			<div class=" my-6">
+			<div class=" tw-my-6">
 				<label
 					for="average-mindless-usage-duration-minutes"
-					class="block mb-2 text-sm text-gray-900"
+					class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>On average, how long do these sessions of content consumption last?</label
 				>
 				<input
 					type="number"
 					id="average-mindless-usage-duration-minutes"
 					bind:value={formData.average_mindless_usage_duration_minutes}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
+					class="tw-bg-gray-50 tw-border tw-border-gray-100 tw-text-gray-900 tw-text-sm tw-rounded-lg tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-disabled:text-gray-500 tw-disabled:bg-gray-200 tw-block tw-w-full tw-p-3"
 					placeholder="Duration minutes"
 					min="0"
 					required
 					autocomplete="off"
 				/>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 
-			<div class=" my-6">
-				<label for="social-media-health-impact" class="block mb-2 text-sm text-gray-900"
+			<div class=" tw-my-6">
+				<label for="social-media-health-impact" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900"
 					>How do you feel your social media usage affects your physical and mental health and
 					well-being?</label
 				>
-				<div id="social-media-health-impact" class="mt-5">
-					<div class="flex items-center mb-2">
+				<div id="social-media-health-impact" class="tw-mt-5">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.social_media_health_impact}
 							value={'1'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
 							Social media positively affects my health
 						</div>
 					</div>
-					<div class="flex items-center mb-2">
+					<div class="tw-flex tw-items-center tw-mb-2">
 						<input
 							type="radio"
 							bind:group={formData.social_media_health_impact}
 							value={'2'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
 							Social media has no effect on my health
 						</div>
 					</div>
-					<div class="flex items-center">
+					<div class="tw-flex tw-items-center">
 						<input
 							type="radio"
 							bind:group={formData.social_media_health_impact}
 							value={'3'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+							class="tw-size-3 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300"
 						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
+						<div class="tw-ml-2 tw-mt-0.5 tw-text-sm tw-font-medium tw-text-gray-700">
 							Social media negatively affects my health
 						</div>
 					</div>
 				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
+				<div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-text-right">
 					<span>REQUIRED</span>
 				</div>
 			</div>
 			<hr />
 
-			<div class=" my-6">
+			<div class=" tw-my-6">
 				<div class=" text-gray-600 text-sm">
 					If you would like to reschedule or cancel your participation in the study for any reason,
 					please notify the student lead (jaeryang_baek@sfu.ca) or the principle investigator

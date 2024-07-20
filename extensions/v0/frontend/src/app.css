@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-extension-app * {
+#extension-app * {
   font-family: "Cabin", sans-serif;
   word-break: keep-all;
 }

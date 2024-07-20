@@ -3,6 +3,7 @@
 
   import GrayscaleOverlay from "./lib/components/GrayscaleOverlay.svelte";
   import Survey from "./lib/components/Survey.svelte";
+  import { API_BASE_URL } from "$lib/constants";
 
   let user = null;
 </script>
@@ -26,12 +27,18 @@
             />
           </div>
           <div class="tw-text-xl tw-text-gray-600 tw-font-semibold">
-            Pre-Experiment Survey
+            <!-- Pre-Experiment Survey -->
           </div>
         </div>
 
         <div class=" tw-flex tw-flex-col tw-max-h-[26rem] tw-overflow-y-scroll">
-          <Survey />
+          <iframe
+            src="{API_BASE_URL}/survey"
+            frameborder="0"
+            border="0"
+            cellspacing="0"
+            style="border-style: none;width: 100%; height: 26rem;"
+          />
         </div>
       </div>
     </div>

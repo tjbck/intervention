@@ -30,22 +30,26 @@
     showTimerModal = true;
   });
 
-  $: if (show) {
-    showTimerModal = true;
-  }
-
   const handleConfirm = (_duration) => {
     showTimerModal = false;
-    duration = parseInt(_duration);
+    duration = parseInt(_duration * 60);
     startTimer();
   };
 </script>
 
 <TimerModal
-  show={showTimerModal}
+  bind:show={showTimerModal}
   on:confirm={(e) => {
     handleConfirm(e.detail);
   }}
 />
 
-<p>Time remaining: {remainingTime} seconds</p>
+<div
+  class="tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999999999] tw-overflow-hidden tw-overscroll-contain tw-pointer-events-none"
+>
+  <div
+    class=" tw-flex tw-items-center tw-gap-1 tw-absolute tw-top-0 tw-right-0 tw-p-4 tw-pointer-events-auto"
+  >
+    <p>Time remaining: {remainingTime} seconds</p>
+  </div>
+</div>

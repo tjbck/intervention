@@ -20,7 +20,7 @@
   {:else if tab === "timer"}
     <Timer show={true} />
   {:else if tab === "tap"}
-    <Tap show={true} />
+    <Tap />
   {/if}
 {:else}
   <div

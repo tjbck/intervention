@@ -1,49 +1,38 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
 
-  export let show = false;
+  // Function to handle keypress events
+  const handleKeyPress = (event: KeyboardEvent) => {
+    switch (event.key) {
+      case "ArrowUp":
+        console.log("ArrowUp");
+        window.scrollBy(0, -10); // Scroll up by 10 pixels
+        break;
+      case "ArrowDown":
+        console.log("ArrowDown");
+        window.scrollBy(0, 10); // Scroll down by 10 pixels
+        break;
+    }
+  };
 
-  export let delta = 0.1;
-  let grayscale = 0;
-
-  let isScrolling = false;
-  let scrollTimeout = null;
+  // Function to disable scroll
+  const disableScroll = (event: Event) => {
+    event.preventDefault();
+  };
 
   onMount(() => {
-    const mouseDownHandler = (e) => {
-      console.log("mousedown", e);
-      grayscale = Math.min(1, grayscale + delta);
-    };
+    // Disable scroll on mouse wheel and touch move
+    window.addEventListener("wheel", disableScroll, { passive: false });
+    window.addEventListener("touchmove", disableScroll, { passive: false });
 
-    // listen to scroll
-    const scrollHandler = (e) => {
-      if (!isScrolling) {
-        isScrolling = true;
-      }
+    // Add keypress event listener
+    window.addEventListener("keydown", handleKeyPress);
+  });
 
-      // Clear our timeout throughout the scroll so it keeps resetting
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(function () {
-        isScrolling = false;
-        grayscale = Math.min(1, grayscale + delta);
-        console.log("Grayscale", grayscale);
-      }, 50); // 50 ms of no wheel events
-    };
-
-    window.addEventListener("wheel", scrollHandler);
-    // window.addEventListener("mousedown", mouseDownHandler);
-
-    return () => {
-      window.removeEventListener("wheel", scrollHandler);
-      // window.removeEventListener("mousedown", mouseDownHandler);
-    };
+  onDestroy(() => {
+    // Remove event listeners when component is destroyed
+    window.removeEventListener("wheel", disableScroll);
+    window.removeEventListener("touchmove", disableScroll);
+    window.removeEventListener("keydown", handleKeyPress);
   });
 </script>
-
-{#if show}
-  <div
-    class="tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999999999] tw-overflow-hidden tw-overscroll-contain tw-pointer-events-none"
-    style="backdrop-filter: grayscale({grayscale});"
-  ></div>
-{/if}

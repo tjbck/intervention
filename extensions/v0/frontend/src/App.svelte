@@ -16,9 +16,9 @@
 
 {#if user}
   {#if tab === "gray"}
-    <GrayscaleOverlay show={true} />
+    <GrayscaleOverlay />
   {:else if tab === "timer"}
-    <Timer show={true} />
+    <Timer />
   {:else if tab === "tap"}
     <Tap />
   {/if}

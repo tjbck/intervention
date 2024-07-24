@@ -1,49 +1,51 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import TimerModal from "./common/TimerModal.svelte";
 
-  export let show = false;
+  let duration: number = 0;
+  let interval: NodeJS.Timeout | null = null;
+  let remainingTime: number = 0;
 
-  export let delta = 0.1;
-  let grayscale = 0;
+  let showTimerModal = true;
 
-  let isScrolling = false;
-  let scrollTimeout = null;
+  const startTimer = () => {
+    if (interval) {
+      clearInterval(interval);
+    }
+
+    remainingTime = duration;
+    interval = setInterval(() => {
+      if (remainingTime > 0) {
+        remainingTime--;
+      } else {
+        clearInterval(interval);
+        alert("Time's up! Please set the duration again.");
+        showTimerModal = true;
+        duration = 0;
+      }
+    }, 1000);
+  };
 
   onMount(() => {
-    const mouseDownHandler = (e) => {
-      console.log("mousedown", e);
-      grayscale = Math.min(1, grayscale + delta);
-    };
-
-    // listen to scroll
-    const scrollHandler = (e) => {
-      if (!isScrolling) {
-        isScrolling = true;
-      }
-
-      // Clear our timeout throughout the scroll so it keeps resetting
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(function () {
-        isScrolling = false;
-        grayscale = Math.min(1, grayscale + delta);
-        console.log("Grayscale", grayscale);
-      }, 50); // 50 ms of no wheel events
-    };
-
-    window.addEventListener("wheel", scrollHandler);
-    // window.addEventListener("mousedown", mouseDownHandler);
-
-    return () => {
-      window.removeEventListener("wheel", scrollHandler);
-      // window.removeEventListener("mousedown", mouseDownHandler);
-    };
+    showTimerModal = true;
   });
+
+  $: if (show) {
+    showTimerModal = true;
+  }
+
+  const handleConfirm = (_duration) => {
+    showTimerModal = false;
+    duration = parseInt(_duration);
+    startTimer();
+  };
 </script>
 
-{#if show}
-  <div
-    class="tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999999999] tw-overflow-hidden tw-overscroll-contain tw-pointer-events-none"
-    style="backdrop-filter: grayscale({grayscale});"
-  ></div>
-{/if}
+<TimerModal
+  show={showTimerModal}
+  on:confirm={(e) => {
+    handleConfirm(e.detail);
+  }}
+/>
+
+<p>Time remaining: {remainingTime} seconds</p>

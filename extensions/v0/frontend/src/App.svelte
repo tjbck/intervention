@@ -58,10 +58,10 @@
 {/if}
 
 <div
-  class="modal tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999] tw-overflow-hidden tw-overscroll-contain"
+  class="tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999999999] tw-overflow-hidden tw-overscroll-contain tw-pointer-events-none"
 >
   <div
-    class=" tw-flex tw-items-center tw-gap-1 tw-absolute tw-bottom-0 tw-right-0 tw-p-4"
+    class=" tw-flex tw-items-center tw-gap-1 tw-absolute tw-bottom-0 tw-right-0 tw-p-4 tw-pointer-events-auto"
   >
     {#if tab !== ""}
       <div

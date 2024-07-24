@@ -52,7 +52,7 @@
         <div
           class=" tw-text-lg tw-font-semibold tw-dark:text-gray-200 tw-mb-2.5"
         >
-          Set a duration
+          Timer
         </div>
 
         <slot>

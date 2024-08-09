@@ -31,10 +31,13 @@
 
   onMount(() => {
     console.log(localStorage.timer);
-    if (localStorage.timer_duration && localStorage.timer_duration > 0) {
-      duration = localStorage.timer_duration;
+    if (
+      localStorage.timer_duration &&
+      parseInt(localStorage.timer_duration) > 0
+    ) {
+      duration = parseInt(localStorage.timer_duration);
       startTimer();
-    } else if (localStorage.timer_duration === 0) {
+    } else if (parseInt(localStorage.timer_duration) === 0) {
       showTimerDoneOverlay = true;
     } else {
       showTimerModal = true;

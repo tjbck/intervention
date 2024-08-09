@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Intervention V0 (Tangent Lab)",
-  "description": "With every touch, it gradually transforms your screen to grayscale",
+  "description": "Intervention V0 (Tangent Lab)",
   "version": "1.0",
   "icons": {
     "16": "images/icon-16.png",

@@ -20,7 +20,7 @@
   let mounted = false;
 
   let hourValue = "0";
-  let minuteValue = "0";
+  let minuteValue = "20";
 
   onMount(() => {
     mounted = true;

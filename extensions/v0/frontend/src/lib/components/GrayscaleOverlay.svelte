@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let delta = 0.1;
+  export let delta = 0.01;
   let grayscale = 0;
 
   let isScrolling = false;
@@ -21,20 +21,19 @@
 
       // Clear our timeout throughout the scroll so it keeps resetting
       clearTimeout(scrollTimeout);
-
       scrollTimeout = setTimeout(function () {
         isScrolling = false;
         grayscale = Math.min(1, grayscale + delta);
         console.log("Grayscale", grayscale);
-      }, 50); // 50 ms of no wheel events
+      }, 100); // 50 ms of no wheel events
     };
 
     window.addEventListener("wheel", scrollHandler);
-    // window.addEventListener("mousedown", mouseDownHandler);
+    window.addEventListener("mousedown", mouseDownHandler);
 
     return () => {
       window.removeEventListener("wheel", scrollHandler);
-      // window.removeEventListener("mousedown", mouseDownHandler);
+      window.removeEventListener("mousedown", mouseDownHandler);
     };
   });
 </script>

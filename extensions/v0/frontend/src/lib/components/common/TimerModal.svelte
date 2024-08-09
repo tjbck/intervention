@@ -44,58 +44,18 @@
     in:fade={{ duration: 10 }}
   >
     <div
-      class="m-auto rounded-2xl max-w-full w-[32rem] mx-2 bg-white shadow-3xl border border-gray-850"
+      class="overlay-modal-container"
       in:flyAndScale
       on:mousedown={(e) => {
         e.stopPropagation();
       }}
     >
       <div class="px-[1.75rem] py-6">
-        <div class=" text-lg font-semibold text-gray-900 mb-2.5">Timer</div>
+        <div class="flex justify-between items-center">
+          <div class="timer-modal-title self-center">Timer</div>
 
-        <slot>
-          <div>
-            <div class=" text-sm text-gray-500">
-              Set a duration for the timer
-            </div>
-
-            <div class="timer-input">
-              <div class="flex items-center gap-2 w-full">
-                <input
-                  bind:value={hourValue}
-                  placeholder={"0"}
-                  class="w-full mt-2 rounded-lg px-4 py-2 text-sm bg-gray-100 outline-none border-none resize-none"
-                  type="number"
-                  min="0"
-                  max="23"
-                  step="1"
-                  required
-                />
-
-                <div class=" translate-y-1 text-gray-500 text-sm">hours</div>
-              </div>
-
-              <div class="flex items-center gap-2 w-full">
-                <input
-                  bind:value={minuteValue}
-                  placeholder={"0"}
-                  class="w-full mt-2 rounded-lg px-4 py-2 text-sm bg-gray-100 outline-none border-none resize-none"
-                  type="number"
-                  min="0"
-                  max="59"
-                  step="1"
-                  required
-                />
-
-                <div class=" translate-y-1 text-gray-500 text-sm">min</div>
-              </div>
-            </div>
-          </div>
-        </slot>
-
-        <div class="mt-3 flex justify-between gap-1.5">
           <button
-            class="  bg-gray-200 hover:bg-gray-300 text-gray-800 border-none font-medium w-full py-2.5 rounded-lg transition cursor-pointer"
+            class="timer-set-button"
             on:click={() => {
               show = false;
 
@@ -106,6 +66,42 @@
           >
             {confirmLabel}
           </button>
+        </div>
+
+        <div>
+          <div class=" text-sm text-gray-500">Set a duration for the timer</div>
+
+          <div class="timer-input-container">
+            <div class="flex items-center gap-2 w-full">
+              <input
+                bind:value={hourValue}
+                placeholder={"0"}
+                class="timer-input"
+                type="number"
+                min="0"
+                max="23"
+                step="1"
+                required
+              />
+
+              <div class=" translate-y-1 text-gray-500 text-sm">hours</div>
+            </div>
+
+            <div class="flex items-center gap-2 w-full">
+              <input
+                bind:value={minuteValue}
+                placeholder={"0"}
+                class="timer-input"
+                type="number"
+                min="0"
+                max="59"
+                step="1"
+                required
+              />
+
+              <div class=" translate-y-1 text-gray-500 text-sm">min</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

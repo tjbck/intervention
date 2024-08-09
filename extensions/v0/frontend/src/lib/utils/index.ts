@@ -1,3 +1,5 @@
+import { sendUsage } from "$lib/apis/usage";
+
 export const formatTime = (seconds) => {
   const pad = (num) => String(num).padStart(2, "0");
   const hours = Math.floor(seconds / 3600);
@@ -9,4 +11,12 @@ export const formatTime = (seconds) => {
   } else {
     return `${pad(minutes)}:${pad(secs)}`;
   }
+};
+
+export const startTracker = async (user_id, extension_id) => {
+  console.log(user_id, extension_id);
+  // User Tracking
+  setInterval(async () => {
+    await sendUsage(user_id, extension_id);
+  }, 5000);
 };

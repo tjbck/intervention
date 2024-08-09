@@ -10,13 +10,45 @@
 }
 
 .overlay {
-  @apply fixed top-0 right-0 left-0 bottom-0 w-full min-h-screen h-screen flex justify-center z-[9999999999] overflow-hidden overscroll-contain pointer-events-none;
+  @apply fixed top-0 right-0 left-0 bottom-0 w-full min-h-screen h-screen flex justify-center z-[99999] overflow-hidden overscroll-contain pointer-events-none text-gray-900;
+}
+
+.full-screen-overlay {
+  @apply fixed top-0 right-0 left-0 bottom-0 w-full min-h-screen h-screen flex justify-center z-[99999] overflow-hidden overscroll-contain bg-white  text-gray-900;
 }
 
 .overlay-modal {
-  @apply fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain;
+  @apply fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[99999] overflow-hidden overscroll-contain;
+}
+
+.overlay-modal-container {
+  @apply m-auto rounded-2xl max-w-full w-[32rem] mx-2 bg-white shadow-2xl border border-gray-800;
+}
+
+.timer-modal-title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.timer-input-container {
+  @apply flex gap-2 justify-between;
 }
 
 .timer-input {
-  @apply flex gap-2 justify-between;
+  @apply w-full mt-2 rounded-lg px-4 py-2 text-sm text-gray-800 bg-gray-100 outline-none border-none resize-none;
+}
+
+.timer-set-button {
+  @apply bg-white hover:bg-gray-100 text-blue-600  border-none font-medium py-2 px-4 rounded-lg transition cursor-pointer text-center;
+}
+
+.timer-ignore-button {
+  @apply bg-white hover:bg-gray-100 text-blue-600  border-none font-medium py-2.5 px-4 rounded-lg transition cursor-pointer text-center;
+}
+
+.timer-display-container {
+  @apply flex text-xs items-center gap-1 absolute bottom-0 right-0 p-1 pointer-events-auto;
+}
+
+.timer-display {
+  @apply px-3 py-1 rounded-lg bg-white text-gray-700 font-medium;
 }

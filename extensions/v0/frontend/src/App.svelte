@@ -10,6 +10,7 @@
   import Tap from "$lib/components/Tap.svelte";
 
   let user_id = null;
+  let extension_id = null;
 
   const INTERVENTIONS = ["timer", "gray", "tap"];
 
@@ -24,29 +25,41 @@
       const data = JSON.parse(event.data);
       if (data?.user_id) {
         await Storage.set("user_id", data?.user_id);
+        await Storage.set(
+          "installation_timestamp",
+          Math.round(Date.now() / 1000)
+        );
         user_id = data.user_id;
       }
     });
 
     user_id = (await Storage.get("user_id")) ?? "";
     console.log(user_id);
+
+    // Add a keyboard listener Ctrl + Shift + Q to reset the user_id
+    window.addEventListener("keydown", (event) => {
+      if (event.ctrlKey && event.shiftKey && event.key === "Q") {
+        Storage.remove("user_id");
+        user_id = "";
+      }
+    });
   });
 </script>
 
 {#if user_id}
   {#if user_id % 1 === 0}
-    <Timer />
+    <Timer userId={user_id} />
   {:else if user_id % 2 === 0}
-    <GrayscaleOverlay />
+    <GrayscaleOverlay userId={user_id} />
   {:else if user_id % 3 === 0}
-    <Tap />
+    <Tap userId={user_id} />
   {/if}
 {:else if user_id === ""}
   <div
     class="modal fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain"
   >
     <div
-      class=" m-auto rounded-2xl w-[36rem] max-w-full mx-2 bg-white shadow-3xl max-h-[100dvh] overflow-y-auto"
+      class=" m-auto rounded-2xl w-[36rem] max-w-full mx-2 bg-white shadow-2xl max-h-[100dvh] overflow-y-auto"
     >
       <div class=" flex flex-col p-4 mb-4">
         <div class=" w-full flex items-center gap-3">
@@ -76,7 +89,7 @@
     class="modal fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain"
   >
     <div
-      class=" m-auto rounded-2xl w-[36rem] max-w-full mx-2 bg-white shadow-3xl max-h-[100dvh] overflow-y-auto"
+      class=" m-auto rounded-2xl w-[36rem] max-w-full mx-2 bg-white shadow-2xl max-h-[100dvh] overflow-y-auto"
     >
       <div class=" flex flex-col p-4 text-center">Loading...</div>
     </div>

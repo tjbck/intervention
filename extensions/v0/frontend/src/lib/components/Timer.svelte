@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import TimerModal from "./common/TimerModal.svelte";
+  import { formatTime } from "$lib/utils";
 
   let duration: number = 0;
   let interval: NodeJS.Timeout | null = null;
@@ -50,6 +51,6 @@
   <div
     class=" tw-flex tw-items-center tw-gap-1 tw-absolute tw-top-0 tw-right-0 tw-p-4 tw-pointer-events-auto"
   >
-    <p>Time remaining: {remainingTime} seconds</p>
+    <p>Time remaining: {formatTime(remainingTime)}</p>
   </div>
 </div>

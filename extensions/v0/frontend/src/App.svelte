@@ -1,17 +1,30 @@
 <script>
   import { onMount } from "svelte";
 
-  import GrayscaleOverlay from "./lib/components/GrayscaleOverlay.svelte";
-  import Survey from "./lib/components/Survey.svelte";
   import { API_BASE_URL } from "$lib/constants";
+  import GrayscaleOverlay from "./lib/components/GrayscaleOverlay.svelte";
+
   import Timer from "$lib/components/Timer.svelte";
   import Tap from "$lib/components/Tap.svelte";
 
-  let user = true;
+  let user = null;
 
   const INTERVENTIONS = ["timer", "gray", "tap"];
 
   let tab = "";
+
+  onMount(() => {
+    console.log(import.meta.env.DEV);
+
+    // listen to iframe messages
+
+    window.addEventListener("message", (event) => {
+      console.log("message", event.data);
+      if (event.data === "user") {
+        console.log(event);
+      }
+    });
+  });
 </script>
 
 {#if user}
@@ -27,7 +40,7 @@
     class="modal tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-bg-black/60 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999] tw-overflow-hidden tw-overscroll-contain"
   >
     <div
-      class=" tw-m-auto tw-rounded-2xl tw-w-[32rem] tw-max-w-full tw-mx-2 tw-bg-white tw-shadow-3xl tw-max-h-[100dvh] tw-overflow-y-auto"
+      class=" tw-m-auto tw-rounded-2xl tw-w-[36rem] tw-max-w-full tw-mx-2 tw-bg-white tw-shadow-3xl tw-max-h-[100dvh] tw-overflow-y-auto"
     >
       <div class=" tw-flex tw-flex-col tw-p-4 tw-mb-4">
         <div class=" tw-w-full tw-flex tw-items-center tw-gap-3">
@@ -43,13 +56,10 @@
           </div>
         </div>
 
-        <div class=" tw-flex tw-flex-col tw-max-h-[26rem] tw-overflow-y-scroll">
+        <div class=" tw-flex tw-flex-col">
           <iframe
             src="{API_BASE_URL}/survey"
-            frameborder="0"
-            border="0"
-            cellspacing="0"
-            style="border-style: none;width: 100%; height: 26rem;"
+            style="border-style: none;width: 100%; height: 30rem; overflow: hidden;"
           />
         </div>
       </div>
@@ -57,7 +67,7 @@
   </div>
 {/if}
 
-<div
+<!-- <div
   class="tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999999999] tw-overflow-hidden tw-overscroll-contain tw-pointer-events-none"
 >
   <div
@@ -89,4 +99,4 @@
       }}>Tap</button
     >
   </div>
-</div>
+</div> -->

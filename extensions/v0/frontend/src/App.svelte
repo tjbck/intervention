@@ -46,7 +46,9 @@
     window.addEventListener("keydown", (event) => {
       if (event.ctrlKey && event.shiftKey && event.key === "Q") {
         Storage.remove("user_id");
+        Storage.remove("installation_timestamp");
         user_id = "";
+        installation_timestamp = null;
       }
     });
   });

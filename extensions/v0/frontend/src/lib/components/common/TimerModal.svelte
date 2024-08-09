@@ -9,7 +9,7 @@
   export let message = "";
 
   export let cancelLabel = "Cancel";
-  export let confirmLabel = "Confirm";
+  export let confirmLabel = "Set";
 
   export let input = false;
   export let inputPlaceholder = "";
@@ -18,7 +18,9 @@
 
   let modalElement = null;
   let mounted = false;
-  let inputValue = "";
+
+  let hourValue = "0";
+  let minuteValue = "0";
 
   onMount(() => {
     mounted = true;
@@ -38,43 +40,67 @@
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
     bind:this={modalElement}
-    class=" tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-bg-black/60 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999] tw-overflow-hidden tw-overscroll-contain"
+    class="overlay-modal"
     in:fade={{ duration: 10 }}
   >
     <div
-      class=" tw-m-auto tw-rounded-2xl tw-max-w-full tw-w-[32rem] tw-mx-2 tw-bg-white tw-shadow-3xl tw-border tw-border-gray-850"
+      class="m-auto rounded-2xl max-w-full w-[32rem] mx-2 bg-white shadow-3xl border border-gray-850"
       in:flyAndScale
       on:mousedown={(e) => {
         e.stopPropagation();
       }}
     >
-      <div class="tw-px-[1.75rem] tw-py-6">
-        <div
-          class=" tw-text-lg tw-font-semibold tw-dark:text-gray-200 tw-mb-2.5"
-        >
-          Timer
-        </div>
+      <div class="px-[1.75rem] py-6">
+        <div class=" text-lg font-semibold text-gray-900 mb-2.5">Timer</div>
 
         <slot>
-          <div class=" tw-text-sm tw-text-gray-500">
-            Set a duration for the timer in minutes
+          <div>
+            <div class=" text-sm text-gray-500">
+              Set a duration for the timer
+            </div>
 
-            <input
-              bind:value={inputValue}
-              placeholder={"Enter duration in minutes"}
-              class="tw-w-full tw-mt-2 tw-rounded-lg tw-px-4 tw-py-2 tw-text-sm tw-bg-gray-100 tw-outline-none tw-border-none tw-resize-none"
-              type="number"
-              required
-            />
+            <div class="timer-input">
+              <div class="flex items-center gap-2 w-full">
+                <input
+                  bind:value={hourValue}
+                  placeholder={"0"}
+                  class="w-full mt-2 rounded-lg px-4 py-2 text-sm bg-gray-100 outline-none border-none resize-none"
+                  type="number"
+                  min="0"
+                  max="23"
+                  step="1"
+                  required
+                />
+
+                <div class=" translate-y-1 text-gray-500 text-sm">hours</div>
+              </div>
+
+              <div class="flex items-center gap-2 w-full">
+                <input
+                  bind:value={minuteValue}
+                  placeholder={"0"}
+                  class="w-full mt-2 rounded-lg px-4 py-2 text-sm bg-gray-100 outline-none border-none resize-none"
+                  type="number"
+                  min="0"
+                  max="59"
+                  step="1"
+                  required
+                />
+
+                <div class=" translate-y-1 text-gray-500 text-sm">min</div>
+              </div>
+            </div>
           </div>
         </slot>
 
-        <div class="tw-mt-3 tw-flex tw-justify-between tw-gap-1.5">
+        <div class="mt-3 flex justify-between gap-1.5">
           <button
-            class="  tw-bg-gray-200 hover:tw-bg-gray-300 tw-text-gray-800 tw-border-none tw-font-medium tw-w-full tw-py-2.5 tw-rounded-lg tw-transition tw-cursor-pointer"
+            class="  bg-gray-200 hover:bg-gray-300 text-gray-800 border-none font-medium w-full py-2.5 rounded-lg transition cursor-pointer"
             on:click={() => {
               show = false;
-              dispatch("confirm", inputValue);
+
+              const minutes = parseInt(hourValue) * 60 + parseInt(minuteValue);
+              dispatch("confirm", minutes);
             }}
             type="button"
           >

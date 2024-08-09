@@ -37,10 +37,10 @@
 {#if show}
   <div
     bind:this={modalElement}
-    class="modal tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-bg-black/60 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999] tw-overflow-hidden tw-overscroll-contain"
+    class="modal fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain"
   >
     <div
-      class=" tw-m-auto tw-rounded-2xl tw-w-[48rem] tw-max-w-full tw-mx-2 tw-bg-white tw-shadow-3xl tw-max-h-[100dvh] tw-overflow-y-auto"
+      class=" m-auto rounded-2xl w-[48rem] max-w-full mx-2 bg-white shadow-3xl max-h-[100dvh] overflow-y-auto"
     >
       <slot />
     </div>

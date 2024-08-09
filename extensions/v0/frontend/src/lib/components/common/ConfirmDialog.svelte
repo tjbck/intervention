@@ -48,23 +48,21 @@
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
     bind:this={modalElement}
-    class=" tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-bottom-0 tw-bg-black/60 tw-w-full tw-min-h-screen tw-h-screen tw-flex tw-justify-center tw-z-[9999] tw-overflow-hidden tw-overscroll-contain"
+    class=" fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain"
     in:fade={{ duration: 10 }}
     on:mousedown={() => {
       show = false;
     }}
   >
     <div
-      class=" tw-m-auto tw-rounded-2xl tw-max-w-full tw-w-[32rem] tw-mx-2 tw-bg-gray-50 tw-dark:bg-gray-950 tw-shadow-3xl tw-border tw-border-gray-850"
+      class=" m-auto rounded-2xl max-w-full w-[32rem] mx-2 bg-gray-50 dark:bg-gray-950 shadow-3xl border border-gray-850"
       in:flyAndScale
       on:mousedown={(e) => {
         e.stopPropagation();
       }}
     >
-      <div class="tw-px-[1.75rem] tw-py-6">
-        <div
-          class=" tw-text-lg tw-font-semibold tw-dark:text-gray-200 tw-mb-2.5"
-        >
+      <div class="px-[1.75rem] py-6">
+        <div class=" text-lg font-semibold dark:text-gray-200 mb-2.5">
           {#if title !== ""}
             {title}
           {:else}
@@ -73,7 +71,7 @@
         </div>
 
         <slot>
-          <div class=" tw-text-sm tw-text-gray-500">
+          <div class=" text-sm text-gray-500">
             {#if message !== ""}
               {message}
             {:else}
@@ -86,7 +84,7 @@
                 placeholder={inputPlaceholder
                   ? inputPlaceholder
                   : "Enter your message"}
-                class="tw-w-full tw-mt-2 tw-rounded-lg tw-px-4 tw-py-2 tw-text-sm dark:tw-text-gray-300 dark:tw-bg-gray-900 tw-outline-none tw-resize-none"
+                class="w-full mt-2 rounded-lg px-4 py-2 text-sm dark:text-gray-300 dark:bg-gray-900 outline-none resize-none"
                 rows="3"
                 required
               />
@@ -94,9 +92,9 @@
           </div>
         </slot>
 
-        <div class="tw-mt-6 tw-flex tw-justify-between tw-gap-1.5">
+        <div class="mt-6 flex justify-between gap-1.5">
           <button
-            class="tw-bg-gray-100 hover:tw-bg-gray-200 tw-text-gray-800 dark:tw-bg-gray-850 dark:hover:tw-bg-gray-800 dark:tw-text-white tw-font-medium w-full tw-py-2.5 tw-rounded-lg tw-transition"
+            class="bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-850 dark:hover:bg-gray-800 dark:text-white font-medium w-full py-2.5 rounded-lg transition"
             on:click={() => {
               show = false;
               dispatch("cancel");
@@ -106,7 +104,7 @@
             {cancelLabel}
           </button>
           <button
-            class="tw-bg-gray-900 hover:tw-bg-gray-800 tw-text-gray-100 dark:tw-bg-gray-100 dark:hover:tw-bg-white dark:tw-text-gray-800 tw-font-medium tw-w-full tw-py-2.5 tw-rounded-lg tw-transition"
+            class="bg-gray-900 hover:bg-gray-800 text-gray-100 dark:bg-gray-100 dark:hover:bg-white dark:text-gray-800 font-medium w-full py-2.5 rounded-lg transition"
             on:click={() => {
               show = false;
               dispatch("confirm", inputValue);

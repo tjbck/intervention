@@ -6,7 +6,6 @@ export default {
   },
   plugins: [],
   important: "#extension-app",
-  prefix: "tw-",
   corePlugins: {
     preflight: false,
   },

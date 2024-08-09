@@ -8,3 +8,15 @@
   font-family: "Cabin", sans-serif;
   word-break: keep-all;
 }
+
+.overlay {
+  @apply fixed top-0 right-0 left-0 bottom-0 w-full min-h-screen h-screen flex justify-center z-[9999999999] overflow-hidden overscroll-contain pointer-events-none;
+}
+
+.overlay-modal {
+  @apply fixed top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center z-[9999] overflow-hidden overscroll-contain;
+}
+
+.timer-input {
+  @apply flex gap-2 justify-between;
+}

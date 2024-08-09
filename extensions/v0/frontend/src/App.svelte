@@ -12,6 +12,8 @@
   let user_id = null;
   let extension_id = null;
 
+  let installation_timestamp = null;
+
   const INTERVENTIONS = ["timer", "gray", "tap"];
 
   let tab = "";
@@ -30,10 +32,14 @@
           Math.round(Date.now() / 1000)
         );
         user_id = data.user_id;
+        installation_timestamp = Math.round(Date.now() / 1000);
       }
     });
 
     user_id = (await Storage.get("user_id")) ?? "";
+    installation_timestamp =
+      (await Storage.get("installation_timestamp")) ?? "";
+
     console.log(user_id);
 
     // Add a keyboard listener Ctrl + Shift + Q to reset the user_id
@@ -47,9 +53,9 @@
 </script>
 
 {#if user_id}
-  {#if user_id % 1 === 0}
+  {#if user_id % 2 === 0}
     <Timer userId={user_id} />
-  {:else if user_id % 2 === 0}
+  {:else if user_id % 1 === 0}
     <GrayscaleOverlay userId={user_id} />
   {:else if user_id % 3 === 0}
     <Tap userId={user_id} />

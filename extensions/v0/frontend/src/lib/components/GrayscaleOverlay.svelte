@@ -8,9 +8,13 @@
   let scrollTimeout = null;
 
   onMount(() => {
+    grayscale = parseFloat(sessionStorage.getItem("grayscale") ?? "0") || 0;
+
     const mouseDownHandler = (e) => {
       console.log("mousedown", e);
       grayscale = Math.min(1, grayscale + delta);
+      console.log("Grayscale", grayscale);
+      sessionStorage.setItem("grayscale", grayscale);
     };
 
     // listen to scroll
@@ -24,8 +28,9 @@
       scrollTimeout = setTimeout(function () {
         isScrolling = false;
         grayscale = Math.min(1, grayscale + delta);
+        sessionStorage.setItem("grayscale", grayscale);
         console.log("Grayscale", grayscale);
-      }, 100); // 50 ms of no wheel events
+      }, 100); // 100 ms of no wheel events
     };
 
     window.addEventListener("wheel", scrollHandler);

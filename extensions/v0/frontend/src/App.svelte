@@ -51,7 +51,11 @@
       <div class=" flex flex-col p-4 mb-4">
         <div class=" w-full flex items-center gap-3">
           <div class="flex justify-center">
-            <img src="/logo.png" alt="logo" class=" size-12 rounded-full" />
+            <img
+              src="{API_BASE_URL}/logo.png"
+              alt="logo"
+              class=" size-12 rounded-full"
+            />
           </div>
           <div class="text-xl text-gray-600 font-semibold">
             <!-- Pre-Experiment Survey -->

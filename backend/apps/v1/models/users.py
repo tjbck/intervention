@@ -43,7 +43,7 @@ class ExitSurvey(BaseModel):
 
 
 class UserModel(BaseModel):
-    id: int
+    id: str
     external_id: Optional[str] = None
     email: str
     name: str = ""

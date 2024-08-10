@@ -51,6 +51,7 @@
         Storage.remove("installation_timestamp");
         user_id = "";
         installation_timestamp = null;
+        extension_id = null;
       }
     });
   });

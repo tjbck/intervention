@@ -73,7 +73,7 @@ class UsersTable:
         user = UserModel(
             **{
                 **form_data.model_dump(exclude_none=True),
-                "id": user_id,
+                "id": str(user_id),
                 "createdAt": int(time.time()),
             }
         )

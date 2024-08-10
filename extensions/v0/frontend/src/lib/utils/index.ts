@@ -14,7 +14,7 @@ export const formatTime = (seconds) => {
 };
 
 export const startTracker = async (user_id, extension_id) => {
-  console.log(user_id, extension_id);
+  console.log("startTracker: ", user_id, extension_id);
   // User Tracking
   setInterval(async () => {
     await sendUsage(user_id, extension_id);

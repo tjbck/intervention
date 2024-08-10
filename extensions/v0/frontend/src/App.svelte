@@ -1,22 +1,20 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
-  import { API_BASE_URL } from "$lib/constants";
+  import { SERVER_BASE_URL } from "$lib/constants";
 
   import { Storage } from "$lib/utils/storage";
   import GrayscaleOverlay from "./lib/components/GrayscaleOverlay.svelte";
 
   import Timer from "$lib/components/Timer.svelte";
   import Tap from "$lib/components/Tap.svelte";
+  import { startTracker } from "$lib/utils";
+
+  const EXTENSION_IDS = ["timer", "gray", "tap"];
 
   let user_id = null;
   let extension_id = null;
 
   let installation_timestamp = null;
-
-  const INTERVENTIONS = ["timer", "gray", "tap"];
-
-  let tab = "";
 
   onMount(async () => {
     console.log(import.meta.env.DEV);
@@ -40,6 +38,10 @@
     installation_timestamp =
       (await Storage.get("installation_timestamp")) ?? "";
 
+    if (installation_timestamp) {
+      installation_timestamp = parseInt(installation_timestamp);
+    }
+
     console.log(user_id);
 
     // Add a keyboard listener Ctrl + Shift + Q to reset the user_id
@@ -52,15 +54,44 @@
       }
     });
   });
+
+  const initExtensionHandler = (user_id, installation_timestamp) => {
+    console.log(user_id, installation_timestamp);
+    // if user_id % 2 == 0, Activate the intervention now and disable after a week
+    // if user_id % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
+    const current_timestamp = Math.round(Date.now() / 1000);
+    if (
+      (user_id % 2 === 0 &&
+        current_timestamp < installation_timestamp + 60 * 60 * 24 * 7) ||
+      (user_id % 2 === 1 &&
+        current_timestamp > installation_timestamp + 60 * 60 * 24 * 7)
+    ) {
+      // activate
+      console.log("The intervention is currently active");
+      extension_id = EXTENSION_IDS[user_id % 3];
+    } else {
+      extension_id = "none";
+    }
+    startTracker(user_id, extension_id);
+  };
+
+  $: if (
+    user_id !== null &&
+    user_id !== "" &&
+    installation_timestamp !== null &&
+    installation_timestamp !== ""
+  ) {
+    initExtensionHandler(user_id, installation_timestamp);
+  }
 </script>
 
-{#if user_id}
-  {#if user_id % 2 === 0}
-    <Timer userId={user_id} />
-  {:else if user_id % 1 === 0}
-    <GrayscaleOverlay userId={user_id} />
-  {:else if user_id % 3 === 0}
-    <Tap userId={user_id} />
+{#if extension_id}
+  {#if extension_id === "timer"}
+    <Timer />
+  {:else if extension_id === "gray"}
+    <GrayscaleOverlay />
+  {:else if extension_id === "tap"}
+    <Tap />
   {/if}
 {:else if user_id === ""}
   <div
@@ -73,7 +104,7 @@
         <div class=" w-full flex items-center gap-3">
           <div class="flex justify-center">
             <img
-              src="{API_BASE_URL}/logo.png"
+              src="{SERVER_BASE_URL}/logo.png"
               alt="logo"
               class=" size-12 rounded-full"
             />
@@ -85,7 +116,7 @@
 
         <div class=" flex flex-col">
           <iframe
-            src="{API_BASE_URL}/survey"
+            src="{SERVER_BASE_URL}/survey"
             style="border-style: none;width: 100%; height: 30rem; overflow: hidden;"
           />
         </div>

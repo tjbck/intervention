@@ -56,6 +56,9 @@
     });
   });
 
+  const DAY_TS = 60 * 60 * 24;
+  // const DAY_TS = 10;
+
   const initExtensionHandler = (user_id, installation_timestamp) => {
     console.log(user_id, installation_timestamp);
     // if user_id % 2 == 0, Activate the intervention now and disable after a week
@@ -63,9 +66,9 @@
     const current_timestamp = Math.round(Date.now() / 1000);
     if (
       (user_id % 2 === 0 &&
-        current_timestamp < installation_timestamp + 60 * 60 * 24 * 7) ||
+        current_timestamp < installation_timestamp + DAY_TS * 7) ||
       (user_id % 2 === 1 &&
-        current_timestamp > installation_timestamp + 60 * 60 * 24 * 7)
+        current_timestamp > installation_timestamp + DAY_TS * 7)
     ) {
       // activate
       console.log("The intervention is currently active");

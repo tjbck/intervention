@@ -22,6 +22,12 @@
     window.addEventListener("message", async (event) => {
       console.log("message", event.data);
 
+      // Validate the event origin to ensure it's from the trusted iframe
+      if (event.origin !== SERVER_BASE_URL) {
+        console.log("Ignored message from untrusted origin:", event.origin);
+        return;
+      }
+
       const data = JSON.parse(event.data);
       if (data?.user_id) {
         await Storage.set("user_id", data?.user_id);

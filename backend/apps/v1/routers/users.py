@@ -102,7 +102,7 @@ def submit_survey(form_data: Survey):
     else:
         raise HTTPException(
             status_code=404,
-            detail="Something went wrong, please contact us via (jaeryang_baek@sfu.ca): User ID not found",
+            detail=f"{form_data.email} not found, please make sure you have signed up first! If the issue persists, please contact us via (jaeryang_baek@sfu.ca)",
         )
 
 

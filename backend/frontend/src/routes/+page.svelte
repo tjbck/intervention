@@ -1,5 +1,5 @@
 <script>
-	import { SERVER_BASE_API, API_BASE_URL } from '$lib/constants';
+	import { SERVER_BASE_URL, API_BASE_URL } from '$lib/constants';
 	import { toast } from 'svelte-sonner';
 	import dayjs from 'dayjs';
 	import ConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
@@ -24,7 +24,7 @@
 	};
 
 	const downloadExtension = () => {
-		window.open(`${SERVER_BASE_API}/static/extension.zip`, '_self');
+		window.open(`${SERVER_BASE_URL}/static/extension.zip`, '_self');
 	};
 
 	const submitForm = async () => {

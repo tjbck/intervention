@@ -18,26 +18,25 @@
     interval = setInterval(() => {
       if (remainingTime > 0) {
         remainingTime--;
-        localStorage.timer_duration = remainingTime;
+        sessionStorage.timer_duration = remainingTime;
       } else {
         clearInterval(interval);
 
         showTimerDoneOverlay = true;
-        localStorage.timer_duration = 0;
+        sessionStorage.timer_duration = 0;
         duration = 0;
       }
     }, 1000);
   };
 
   onMount(() => {
-    console.log(localStorage.timer);
     if (
-      localStorage.timer_duration &&
-      parseInt(localStorage.timer_duration) > 0
+      sessionStorage.timer_duration &&
+      parseInt(sessionStorage.timer_duration) > 0
     ) {
-      duration = parseInt(localStorage.timer_duration);
+      duration = parseInt(sessionStorage.timer_duration);
       startTimer();
-    } else if (parseInt(localStorage.timer_duration) === 0) {
+    } else if (parseInt(sessionStorage.timer_duration) === 0) {
       showTimerDoneOverlay = true;
     } else {
       showTimerModal = true;
@@ -97,7 +96,7 @@
           <button
             class="timer-ignore-button"
             on:click={() => {
-              localStorage.removeItem("timer_duration");
+              sessionStorage.removeItem("timer_duration");
               showTimerDoneOverlay = false;
               showTimerModal = true;
             }}

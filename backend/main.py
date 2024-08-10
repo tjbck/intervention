@@ -11,7 +11,7 @@ import sys
 import os
 
 from apps.v1.main import app as v1_app
-from config import FRONTEND_BUILD_DIR
+from config import FRONTEND_BUILD_DIR, STATIC_DIR
 
 app = FastAPI()
 
@@ -49,6 +49,8 @@ async def check_url(request: Request, call_next):
 
 
 app.mount("/api/v1", v1_app)
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 
 mimetypes.add_type("text/javascript", ".js")
 app.mount(

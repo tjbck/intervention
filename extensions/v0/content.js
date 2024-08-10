@@ -22,8 +22,8 @@ function injectCSS(file) {
 }
 
 // Inject the CSS and JS files
-injectCSS(chrome.runtime.getURL("frontend/dist/style.css"));
-// injectScript(chrome.runtime.getURL("frontend/dist/main.js"), "body");
+injectCSS(chrome.runtime.getURL("build/style.css"));
+// injectScript(chrome.runtime.getURL("build/main.js"), "body");
 
 // const tracking = (user_id, extension_id) => {
 //   console.log(user_id, extension_id);

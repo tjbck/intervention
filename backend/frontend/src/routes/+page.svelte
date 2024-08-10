@@ -1,5 +1,5 @@
 <script>
-	import { API_BASE_URL } from '$lib/constants';
+	import { SERVER_BASE_API, API_BASE_URL } from '$lib/constants';
 	import { toast } from 'svelte-sonner';
 	import dayjs from 'dayjs';
 	import ConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
@@ -23,11 +23,8 @@
 		externalId: ''
 	};
 
-	const downloadExtension = (name = 'force-login') => {
-		// window.open(
-		// 	`https://github.com/tjbck/intervention/raw/main/extensions/intervention/${name}.zip`,
-		// 	'_self'
-		// );
+	const downloadExtension = () => {
+		window.open(`${SERVER_BASE_API}/static/extension.zip`, '_self');
 	};
 
 	const submitForm = async () => {

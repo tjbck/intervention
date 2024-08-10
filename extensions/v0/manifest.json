@@ -22,7 +22,7 @@
       ],
       "js": [
         "content.js",
-        "frontend/dist/main.js"
+        "build/main.js"
       ]
     }
   ],
@@ -32,7 +32,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "frontend/dist/*"
+        "build/*"
       ],
       "matches": [
         "<all_urls>"

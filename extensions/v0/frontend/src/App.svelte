@@ -49,6 +49,7 @@
       if (event.ctrlKey && event.shiftKey && event.key === "Q") {
         Storage.remove("user_id");
         Storage.remove("installation_timestamp");
+        Storage.remove("activated");
         user_id = "";
         installation_timestamp = null;
         extension_id = null;
@@ -59,7 +60,7 @@
   const DAY_TS = 60 * 60 * 24;
   // const DAY_TS = 10;
 
-  const initExtensionHandler = (user_id, installation_timestamp) => {
+  const initExtensionHandler = async (user_id, installation_timestamp) => {
     console.log(user_id, installation_timestamp);
     // if user_id % 2 == 0, Activate the intervention now and disable after a week
     // if user_id % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
@@ -70,9 +71,29 @@
       (user_id % 2 === 1 &&
         current_timestamp > installation_timestamp + DAY_TS * 7)
     ) {
-      // activate
       console.log("The intervention is currently active");
       extension_id = EXTENSION_IDS[user_id % 3];
+
+      // Alert the user that the intervention is active
+      const activatedBeforeStatus = await Storage.get("activated");
+      console.log(activatedBeforeStatus);
+      if (!activatedBeforeStatus) {
+        Storage.set("activated", true);
+        let activationMessage = "The intervention is currently active";
+        if (extension_id === "timer") {
+          activationMessage =
+            "From now on, every time you access Social Media websites, you will be prompted to set a time limit for yourself. The remaining time is visible on the bottom right-hand corner of the screen. Once your time is up, you will be prompted to close the app, but you may alternatively set an additional time limit for yourself and continue using them.";
+        } else if (extension_id === "gray") {
+          activationMessage =
+            "From this moment on, with each interaction with the website, your screen will slowly turn grayscale. This visual cue is designed to raise awareness of your screen time and promote a healthier relationship with the website.";
+        } else if (extension_id === "tap") {
+          activationMessage =
+            "From now on, traditional scrolling methods will be disabled, and you can now navigate through posts by tapping the top half of the screen to move to the previous post and the bottom half to move to the next post. This new interaction aims to encourage a more deliberate and mindful browsing experience, allowing users to engage with content in a controlled and intentional manner.";
+        }
+        alert(activationMessage);
+      } else {
+        console.log("The intervention is currently active");
+      }
     } else {
       extension_id = "none";
     }

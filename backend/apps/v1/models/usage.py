@@ -27,6 +27,7 @@ class UsageModel(BaseModel):
 class UsageForm(BaseModel):
     user_id: str
     extension_id: str
+    event_id: Optional[str] = None
 
 
 class UsageTable:

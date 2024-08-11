@@ -1,6 +1,10 @@
 import { API_BASE_URL } from "$lib/constants";
 
-export const sendUsage = async (userId: string, extensionId: string) => {
+export const sendUsage = async (
+  userId: string,
+  extensionId: string,
+  eventId: null | string = null
+) => {
   let error = null;
 
   const res = await fetch(`${API_BASE_URL}/usage/`, {
@@ -11,6 +15,7 @@ export const sendUsage = async (userId: string, extensionId: string) => {
     body: JSON.stringify({
       user_id: userId,
       extension_id: extensionId,
+      ...(eventId && { event_id: eventId }),
     }),
   })
     .then(async (res) => {

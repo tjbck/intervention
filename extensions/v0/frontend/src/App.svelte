@@ -76,7 +76,7 @@
 
     const extensionIdx = user_id % 3;
     const user_idx_in_group =
-      (user_id + (extensionIdx === 0 ? 0 : extensionIdx === 1 ? 2 : 1)) / 2;
+      (user_id + (extensionIdx === 0 ? 0 : extensionIdx === 1 ? 2 : 1)) / 3;
     if (
       (user_idx_in_group % 2 === 0 &&
         current_timestamp < installation_timestamp + DAY_TS * 7) ||

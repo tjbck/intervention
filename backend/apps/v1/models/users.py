@@ -15,14 +15,6 @@ from config import DB
 class Survey(BaseModel):
     email: str
     date: str
-    age: str | int
-    gender: str
-    race: str
-    income_bracket: str
-    app_usage_frequency: str
-    mindless_usage_frequency: str
-    average_mindless_usage_duration_minutes: str | int
-    social_media_health_impact: str
     model_config = ConfigDict(extra="allow")
 
 

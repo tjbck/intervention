@@ -1,5 +1,6 @@
 import { API_BASE_URL } from "$lib/constants";
 
+
 export const postSurvey = async (payload: object) => {
   let error = null;
 
@@ -27,6 +28,7 @@ export const postSurvey = async (payload: object) => {
   return res;
 };
 
+/*
 export const postExitSurvey = async (payload: object) => {
   let error = null;
 
@@ -53,3 +55,5 @@ export const postExitSurvey = async (payload: object) => {
 
   return res;
 };
+
+*/

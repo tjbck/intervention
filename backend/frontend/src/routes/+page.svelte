@@ -86,8 +86,7 @@
 
 			<div class=" my-2 text-xs">
 				Please sign up and submit the form only if you are fully committed to participating in the
-				study. If you abandon or fail to complete the study, your actions will be reported, which
-				could have serious consequences for your account.
+				study. 
 			</div>
 
 			<div class=" font-semibold">Ensure your commitment before proceeding.</div>
@@ -191,14 +190,13 @@
 						<ol class=" list-decimal pl-5 font-medium py-2">
 							<li>You MUST use the extension every day during the study period.</li>
 							<li>
-								The total duration of usage over the 2 week period should exceed a minimum of 1
-								hour.
+								The total duration of usage over the 2 week period should exceed a minimum of 3
+								hours.
 							</li>
 						</ol>
 
 						We will be closely monitoring your usage, and failure to use the app every day will
-						result in automatic disqualification. Ensure you use the app for at least 1 hour
-						throughout the study to remain eligible for compensation.
+						result in automatic disqualification. Ensure you use the app for at least 30 minutes each day during the study to remain eligible for compensation.
 					</div>
 				</div>
 			</div>
@@ -276,7 +274,7 @@
 
 				<div class=" text-sm text-purple-900 underline">
 					<a
-						href="https://drive.google.com/file/d/1qUy-EIVPdW0N2Rzimv_E2piF3h1vOAFM/view?usp=sharing"
+						href="https://drive.google.com/file/d/1uaMbJW2bvGACYqTpKc21L6F0vZDiQHsP/view?usp=sharing"
 						target="_blank">Consent Form Link</a
 					>
 				</div>

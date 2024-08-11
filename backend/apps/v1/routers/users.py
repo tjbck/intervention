@@ -10,7 +10,7 @@ import time
 import uuid
 
 
-from apps.v1.models.users import Users, UserModel, UserSignUpForm, Survey, ExitSurvey
+from apps.v1.models.users import Users, UserModel, UserSignUpForm
 from utils.main import send_webhook
 
 from config import ENV, MAX_PARTICIPANTS_COUNT
@@ -89,7 +89,6 @@ def signup(form_data: UserSignUpForm):
 # Survey
 #########################
 
-
 @router.post("/survey", response_model=UserModel)
 def submit_survey(form_data: Survey):
     user = Users.get_user_by_email(form_data.email)
@@ -110,7 +109,7 @@ def submit_survey(form_data: Survey):
 # ExitSurvey
 #########################
 
-
+'''
 @router.post("/survey/exit", response_model=UserModel)
 def submit_exit_survey(form_data: ExitSurvey):
     user = Users.get_user_by_email(form_data.email)
@@ -125,3 +124,5 @@ def submit_exit_survey(form_data: ExitSurvey):
             status_code=404,
             detail="Something went wrong, please contact us via (jaeryang_baek@sfu.ca): User ID not found",
         )
+
+'''

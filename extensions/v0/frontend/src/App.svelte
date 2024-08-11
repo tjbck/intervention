@@ -70,13 +70,17 @@
 
   const initExtensionHandler = async (user_id, installation_timestamp) => {
     console.log(user_id, installation_timestamp);
-    // if user_id % 2 == 0, Activate the intervention now and disable after a week
-    // if user_id % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
+    // if user_idx_in_group % 2 == 0, Activate the intervention now and disable after a week
+    // if user_idx_in_group % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
     const current_timestamp = Math.round(Date.now() / 1000);
+
+    const extensionIdx = user_id % 3;
+    const user_idx_in_group =
+      (user_id + (extensionIdx === 0 ? 0 : extensionIdx === 1 ? 2 : 1)) / 2;
     if (
-      (user_id % 2 === 0 &&
+      (user_idx_in_group % 2 === 0 &&
         current_timestamp < installation_timestamp + DAY_TS * 7) ||
-      (user_id % 2 === 1 &&
+      (user_idx_in_group % 2 === 1 &&
         current_timestamp > installation_timestamp + DAY_TS * 7)
     ) {
       console.log("The intervention is currently active");

@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import TimerModal from "./common/TimerModal.svelte";
   import { formatTime } from "$lib/utils";
+
+  const dispatch = createEventDispatcher();
 
   let duration: number = 0;
   let interval: NodeJS.Timeout | null = null;
@@ -21,7 +23,7 @@
         sessionStorage.timer_duration = remainingTime;
       } else {
         clearInterval(interval);
-
+        dispatch("done");
         showTimerDoneOverlay = true;
         sessionStorage.timer_duration = 0;
         duration = 0;
@@ -47,6 +49,13 @@
     showTimerModal = false;
     duration = parseInt(_duration * 60);
     startTimer();
+  };
+
+  const ignoreLimitHandler = () => {
+    dispatch("ignore");
+    sessionStorage.removeItem("timer_duration");
+    showTimerDoneOverlay = false;
+    showTimerModal = true;
   };
 </script>
 
@@ -96,9 +105,7 @@
           <button
             class="timer-ignore-button"
             on:click={() => {
-              sessionStorage.removeItem("timer_duration");
-              showTimerDoneOverlay = false;
-              showTimerModal = true;
+              ignoreLimitHandler();
             }}
           >
             Ignore Timer

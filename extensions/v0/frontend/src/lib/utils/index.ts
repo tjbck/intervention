@@ -14,7 +14,12 @@ export const formatTime = (seconds) => {
 };
 
 export const startTracker = async (user_id, extension_id) => {
-  console.log("startTracker: ", user_id, extension_id);
+  // get current website hostname
+  const hostname = window.location.hostname;
+  console.log("startTracker: ", user_id, extension_id, hostname);
+
+  // send current website hostname
+  await sendUsage(user_id, extension_id, hostname);
   // User Tracking
   setInterval(async () => {
     await sendUsage(user_id, extension_id);

@@ -2,12 +2,14 @@
   import { onMount } from "svelte";
   import { SERVER_BASE_URL } from "$lib/constants";
 
+  import { sendUsage } from "$lib/apis/usage";
+  import { startTracker } from "$lib/utils";
   import { Storage } from "$lib/utils/storage";
+
   import GrayscaleOverlay from "./lib/components/GrayscaleOverlay.svelte";
 
   import Timer from "$lib/components/Timer.svelte";
   import Tap from "$lib/components/Tap.svelte";
-  import { startTracker } from "$lib/utils";
 
   const EXTENSION_IDS = ["timer", "gray", "tap"];
 
@@ -118,7 +120,14 @@
 
 {#if extension_id}
   {#if extension_id === "timer"}
-    <Timer />
+    <Timer
+      on:done={() => {
+        sendUsage(user_id, extension_id, "done");
+      }}
+      on:ignore={() => {
+        sendUsage(user_id, extension_id, "ignore");
+      }}
+    />
   {:else if extension_id === "gray"}
     <GrayscaleOverlay />
   {:else if extension_id === "tap"}

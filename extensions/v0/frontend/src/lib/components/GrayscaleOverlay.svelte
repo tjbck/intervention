@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let delta = 0.05;
+  export let delta = 0.08;
   let grayscale = 0;
 
   let isScrolling = false;

@@ -17,7 +17,7 @@ class Survey(BaseModel):
     date: str
     model_config = ConfigDict(extra="allow")
 
-
+'''
 class ExitSurvey(BaseModel):
     email: str
     date: str
@@ -32,7 +32,7 @@ class ExitSurvey(BaseModel):
     habit_awareness: str
     additional_comments: str
     model_config = ConfigDict(extra="allow")
-
+'''
 
 class UserModel(BaseModel):
     id: str

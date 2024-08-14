@@ -10,7 +10,7 @@ import time
 import uuid
 
 
-from apps.v1.models.users import Users, UserModel, UserSignUpForm
+from apps.v1.models.users import Users, UserModel, UserSignUpForm, Survey
 from utils.main import send_webhook
 
 from config import ENV, MAX_PARTICIPANTS_COUNT

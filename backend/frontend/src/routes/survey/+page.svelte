@@ -387,7 +387,7 @@
 
 			<div class=" my-6">
 				<label for="app-usage-frequency" class="block mb-2 text-sm text-gray-900"
-					>How often do you use TikTok?
+					>How often do you use Social Media?
 				</label>
 				<div id="app-usage-frequency" class="mt-5">
 					<div class="flex items-center mb-2">
@@ -433,8 +433,8 @@
 			</div>
 			<div class=" my-6">
 				<label for="mindless-usage-frequency" class="block mb-2 text-sm text-gray-900"
-					>How often do you catch yourself consuming content on TikTok without being aware of what
-					you are doing?
+					>How often do you catch yourself consuming content on Social Media without being aware of
+					what you are doing?
 				</label>
 				<div id="mindless-usage-frequency" class="mt-5">
 					<div class="flex items-center mb-2">

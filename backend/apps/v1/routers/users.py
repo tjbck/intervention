@@ -125,3 +125,4 @@ def submit_exit_survey(form_data: ExitSurvey):
             status_code=404,
             detail="Something went wrong, please contact us via (jaeryang_baek@sfu.ca): User ID not found",
         )
+

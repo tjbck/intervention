@@ -25,20 +25,9 @@ class Survey(BaseModel):
     social_media_health_impact: str
     model_config = ConfigDict(extra="allow")
 
-
 class ExitSurvey(BaseModel):
     email: str
     date: str
-    intervention_uninstalled: str
-    uninstall_date: str
-    uninstall_reason: str
-    intervention_ux_impact: str
-    mindless_consumption_changes: str
-    intervention_effect: str
-    perception_with_notifications: str
-    future_intervention_usage_likelihood: str
-    habit_awareness: str
-    additional_comments: str
     model_config = ConfigDict(extra="allow")
 
 

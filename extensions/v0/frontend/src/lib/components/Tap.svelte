@@ -6,11 +6,11 @@
     switch (event.key) {
       case "ArrowUp":
         console.log("ArrowUp");
-        window.scrollBy(0, -50); // Scroll up by 10 pixels
+        window.scrollBy(0, -20); // Scroll up by 10 pixels
         break;
       case "ArrowDown":
         console.log("ArrowDown");
-        window.scrollBy(0, 50); // Scroll down by 10 pixels
+        window.scrollBy(0, 20); // Scroll down by 10 pixels
         break;
     }
   };

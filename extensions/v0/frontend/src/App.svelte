@@ -74,9 +74,15 @@
     // if user_idx_in_group % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
     const current_timestamp = Math.round(Date.now() / 1000);
 
+    user_id = parseInt(user_id);
+
     const extensionIdx = user_id % 3;
     const user_idx_in_group =
       (user_id + (extensionIdx === 0 ? 0 : extensionIdx === 1 ? 2 : 1)) / 3;
+
+    console.log("extensionIdx", extensionIdx);
+    console.log("user_idx_in_group", user_idx_in_group);
+
     if (
       (user_idx_in_group % 2 === 0 &&
         current_timestamp < installation_timestamp + DAY_TS * 7) ||
@@ -84,7 +90,7 @@
         current_timestamp > installation_timestamp + DAY_TS * 7)
     ) {
       console.log("The intervention is currently active");
-      extension_id = EXTENSION_IDS[user_id % 3];
+      extension_id = EXTENSION_IDS[extensionIdx];
 
       // Alert the user that the intervention is active
       const activatedBeforeStatus = await Storage.get("activated");

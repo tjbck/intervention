@@ -28,6 +28,25 @@ class Survey(BaseModel):
 class ExitSurvey(BaseModel):
     email: str
     date: str
+    helpfulness: str
+    continuedUse: str
+    socialMediaEnjoyment: str
+    usagePatternChange: str
+    primaryGoal: str
+    goalAchievement: str
+    specificChanges: str
+    concentration: str
+    productivity: str
+    usability: str
+    designEngagement: str
+    selfAwareness: str
+    control: str
+    intrusiveness: str
+    wellBeingImprovement: str
+    likedMost: str 
+    dislikedMost: str
+    improvementSuggestions: Optional[str] 
+    additionalComments: Optional[str]  
     model_config = ConfigDict(extra="allow")
 
 

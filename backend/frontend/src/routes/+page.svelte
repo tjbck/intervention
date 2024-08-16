@@ -5,6 +5,8 @@
 	import ConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
 	import { copyToClipboard } from '$lib/utils';
 
+	let eligibilityCheckboxes = [];
+
 	let checkboxElement = null;
 	let reviewed = null;
 
@@ -27,8 +29,8 @@
 	};
 
 	const submitForm = async () => {
-		console.log(checkboxElement);
-		if (checkboxElement.checked) {
+		const allChecked = eligibilityCheckboxes.every((checkbox) => checkbox.checked);
+		if (allChecked && checkboxElement.checked) {
 			if (formData.email !== '') {
 				const res = await fetch(`${API_BASE_URL}/users/signup`, {
 					method: 'POST',
@@ -61,7 +63,7 @@
 				toast.error('Please complete all required form inputs.');
 			}
 		} else {
-			toast.error('Please consent to the consent form.');
+			toast.error('Please consent to the consent form and ensure all eligibility requirements are met.');
 		}
 	};
 </script>
@@ -234,7 +236,52 @@
 					<span>REQUIRED</span>
 				</div>
 			</div>
-
+			<div class="my-6">
+				<label for="eligibility" class="block mb-2 text-sm text-gray-900">Eligibility Requirements</label>
+				<div class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg p-3">
+					<ul class="pl-5">
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[0] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Regular user of Chrome browser</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[1] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Access social media websites from a computer</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[2] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Use at least one of the following (Reddit, Twitter (X), Instagram, Facebook) for at least 30 minutes every day</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[3] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Can participate in the study for 2 weeks</span>
+						</li>
+					</ul>
+				</div>
+				<div class="mt-2 text-xs text-gray-500 text-right">
+					<span>REQUIRED</span>
+				</div>
+			</div>
 			<!-- <div class=" my-6">
 				<label for="name" class="block mb-2 text-sm text-gray-900"
 					>Participant ID (Prolific ID)</label

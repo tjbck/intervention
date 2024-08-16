@@ -35,7 +35,6 @@ class UserModel(BaseModel):
     id: str
     external_id: Optional[str] = None
     email: str
-    name: str = ""
     createdAt: int
     survey: Optional[Survey] = None
     exit_survey: Optional[ExitSurvey] = None
@@ -49,7 +48,6 @@ class UserModel(BaseModel):
 class UserSignUpForm(BaseModel):
     external_id: Optional[str] = None
     email: str
-    name: str = ""
 
 
 class UsersTable:

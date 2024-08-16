@@ -18,7 +18,6 @@
 	let user = null;
 	let formData = {
 		date: dayjs().format('YYYY-MM-DD'),
-		name: '',
 		email: '',
 		externalId: ''
 	};
@@ -30,7 +29,7 @@
 	const submitForm = async () => {
 		console.log(checkboxElement);
 		if (checkboxElement.checked) {
-			if (formData.email !== '' && formData.name !== '') {
+			if (formData.email !== '') {
 				const res = await fetch(`${API_BASE_URL}/users/signup`, {
 					method: 'POST',
 					headers: {
@@ -40,7 +39,6 @@
 					body: JSON.stringify({
 						date: formData.date,
 						email: formData.email,
-						name: formData.name,
 						external_id: formData.externalId
 					})
 				})
@@ -103,7 +101,7 @@
 		<div class="">
 			<div class="text-center text-gray-700 flex flex-col justify-center">
 				<div class=" my-20">
-					<div class="text-xl font-semibold">Hello, {user?.name ?? 'User'}</div>
+					<div class="text-xl font-semibold">Hello, {user?.email ?? 'User'}</div>
 					<div class="text-lg">Thanks for signing up!</div>
 
 					<div class=" my-3">
@@ -221,23 +219,6 @@
 					required
 				/>
 			</div>
-
-			<div class=" my-6">
-				<label for="name" class="block mb-2 text-sm text-gray-900">Participant Name</label>
-				<input
-					type="text"
-					id="name"
-					bind:value={formData.name}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
-					placeholder="Your full name"
-					required
-					autocomplete="name"
-				/>
-				<div class="mt-2 text-xs text-gray-500 text-right">
-					<span>REQUIRED</span>
-				</div>
-			</div>
-
 			<div class=" my-6">
 				<label for="email" class="block mb-2 text-sm text-gray-900">Participant Email</label>
 				<input

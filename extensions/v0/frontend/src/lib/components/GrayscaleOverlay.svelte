@@ -30,7 +30,7 @@
         grayscale = Math.min(1, grayscale + delta);
         sessionStorage.setItem("grayscale", grayscale);
         console.log("Grayscale", grayscale);
-      }, 100); // 100 ms of no wheel events
+      }, 10); // 100 ms of no wheel events
     };
 
     window.addEventListener("wheel", scrollHandler);

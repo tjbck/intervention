@@ -13,7 +13,7 @@ export const sendUsage = async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user_id: userId,
+      user_id: userId.toString(),
       extension_id: extensionId,
       ...(eventId && { event_id: eventId }),
     }),

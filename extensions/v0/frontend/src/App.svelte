@@ -18,6 +18,7 @@
   let extension_id = null;
 
   let installation_timestamp = null;
+  let current_timestamp = null;
 
   let message = "";
 
@@ -76,7 +77,7 @@
     console.log(user_id, installation_timestamp);
     // if user_idx_in_group % 2 == 0, Activate the intervention now and disable after a week
     // if user_idx_in_group % 2 == 1, Activate the intervention after a week (60sec * 60 * 24 * 7)
-    const current_timestamp = Math.round(Date.now() / 1000);
+    current_timestamp = Math.round(Date.now() / 1000);
 
     user_id = parseInt(user_id);
 
@@ -96,6 +97,20 @@
       console.log("The intervention is currently active");
       extension_id = EXTENSION_IDS[extensionIdx];
 
+      let remainingDays = DAYS;
+      if (user_idx_in_group % 2 === 0) {
+        remainingDays =
+          DAYS -
+          Math.floor((current_timestamp - installation_timestamp) / DAY_TS);
+      } else {
+        remainingDays =
+          DAYS -
+          Math.floor(
+            (current_timestamp - (installation_timestamp + DAY_TS * DAYS)) /
+              DAY_TS
+          );
+      }
+
       // Alert the user that the intervention is active
       const activatedBeforeStatus = await Storage.get("activated");
       console.log(activatedBeforeStatus);
@@ -103,11 +118,11 @@
         Storage.set("activated", true);
         message = "The intervention is currently active";
         if (extension_id === "timer") {
-          message = `For the next ${DAYS} days, every time you access Social Media websites, you will be prompted to set a time limit for yourself. The remaining time is visible on the bottom right-hand corner of the screen. Once your time is up, you will be prompted to close the app, but you may alternatively set an additional time limit for yourself and continue using them.`;
+          message = `For the next ${remainingDays} days, every time you access Social Media websites, you will be prompted to set a time limit for yourself. The remaining time is visible on the bottom right-hand corner of the screen. Once your time is up, you will be prompted to close the app, but you may alternatively set an additional time limit for yourself and continue using them.`;
         } else if (extension_id === "gray") {
-          message = `For the next ${DAYS} days, with each interaction with the website, your screen will slowly turn grayscale. This visual cue is designed to raise awareness of your screen time and promote a healthier relationship with the website.`;
+          message = `For the next ${remainingDays} days, with each interaction with the website, your screen will slowly turn grayscale. This visual cue is designed to raise awareness of your screen time and promote a healthier relationship with the website.`;
         } else if (extension_id === "tap") {
-          message = `For the next ${DAYS} days, traditional scrolling methods will be disabled, and you can now navigate through the website by using the arrow up/down keys. This is designed to make you more aware of your interactions with the website and promote a healthier relationship with it.`;
+          message = `For the next ${remainingDays} days, traditional scrolling methods will be disabled, and you can now navigate through the website by using the arrow up/down keys. This is designed to make you more aware of your interactions with the website and promote a healthier relationship with it.`;
         }
         alert(message);
       } else {
@@ -115,13 +130,28 @@
       }
     } else {
       extension_id = "none";
+
+      let remainingDays = DAYS;
+      if (user_idx_in_group % 2 === 1) {
+        remainingDays =
+          DAYS -
+          Math.floor((current_timestamp - installation_timestamp) / DAY_TS);
+      } else {
+        remainingDays =
+          DAYS -
+          Math.floor(
+            (current_timestamp - (installation_timestamp + DAY_TS * DAYS)) /
+              DAY_TS
+          );
+      }
+
       // Alert the user that the intervention is disabled
       const disabledBeforeStatus = await Storage.get("disabled");
       console.log(disabledBeforeStatus);
       if (!disabledBeforeStatus) {
         Storage.set("disabled", true);
 
-        message = `For the next ${DAYS} days, you will continue to use the website without any interventions, please continue to use the website as you normally would.`;
+        message = `For the next ${remainingDays} days, you will continue to use the website without any interventions, please continue to use the website as you normally would.`;
         alert(message);
       } else {
         console.log("The intervention is currently disabled");

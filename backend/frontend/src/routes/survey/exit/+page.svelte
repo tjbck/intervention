@@ -72,7 +72,7 @@
 
 <div class="mx-4 mb-20">
 	<div class="">
-		<div class="flex justify-center">
+		<div class="flex justify-center h-32">
 			<img src="/sfu.png" alt="sfu logo" />
 		</div>
 		<div class="text-xl text-gray-600 font-semibold">Post-Experiment Survey</div>

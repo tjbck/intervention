@@ -20,49 +20,62 @@
     interval = setInterval(() => {
       if (remainingTime > 0) {
         remainingTime--;
-        sessionStorage.timer_duration = remainingTime;
+        localStorage.timer_duration = remainingTime;
       } else {
         clearInterval(interval);
         dispatch("done");
         showTimerDoneOverlay = true;
-        sessionStorage.timer_duration = 0;
+        localStorage.timer_duration = 0;
         duration = 0;
       }
     }, 1000);
   };
 
   onMount(() => {
+    initTabCount();
     init();
 
-    const channel = new BroadcastChannel("timer_intervention_channel");
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden") {
-        channel.postMessage({ timer_duration: sessionStorage.timer_duration });
-        console.log("Tab is now inactive");
+    // listen to timer_duration remove Item event
+    window.addEventListener("storage", (e) => {
+      if (e.key === "timer_duration") {
+        if (e.oldValue !== null && e.newValue === null) {
+          showTimerDoneOverlay = false;
+          showTimerModal = true;
+        }
       }
-      if (document.visibilityState === "visible") {
-        channel.onmessage = (event) => {
-          sessionStorage.setItem("timer_duration", event.data.timer_duration);
-        };
+    });
 
-        init();
-        console.log("Tab is now active again");
-      }
+    window.addEventListener("focus", function () {
+      console.log("focus");
+      init();
     });
   });
 
   const init = () => {
     if (
-      sessionStorage.timer_duration &&
-      parseInt(sessionStorage.timer_duration) > 0
+      localStorage.timer_duration &&
+      parseInt(localStorage.timer_duration) > 0
     ) {
-      duration = parseInt(sessionStorage.timer_duration);
+      duration = parseInt(localStorage.timer_duration);
       startTimer();
-    } else if (parseInt(sessionStorage.timer_duration) === 0) {
+    } else if (parseInt(localStorage.timer_duration) === 0) {
       showTimerDoneOverlay = true;
     } else {
       showTimerModal = true;
+    }
+  };
+
+  const initTabCount = () => {
+    let count = parseInt(localStorage.getItem("tabCount") || "0");
+    localStorage.setItem("tabCount", (count + 1).toString());
+    window.addEventListener("beforeunload", decrementTabCount);
+  };
+
+  const decrementTabCount = () => {
+    let count = parseInt(localStorage.getItem("tabCount") || "0") - 1;
+    localStorage.setItem("tabCount", count.toString());
+    if (count === 0) {
+      localStorage.removeItem("timer_duration");
     }
   };
 
@@ -74,7 +87,7 @@
 
   const ignoreLimitHandler = () => {
     dispatch("ignore");
-    sessionStorage.removeItem("timer_duration");
+    localStorage.removeItem("timer_duration");
     showTimerDoneOverlay = false;
     showTimerModal = true;
   };

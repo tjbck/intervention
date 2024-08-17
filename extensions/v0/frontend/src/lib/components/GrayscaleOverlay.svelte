@@ -8,29 +8,19 @@
   let scrollTimeout = null;
 
   onMount(() => {
+    initTabCount();
     init();
-    const channel = new BroadcastChannel("grayscale_intervention_channel");
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden") {
-        channel.postMessage({ grayscale: sessionStorage.grayscale });
-        console.log("Tab is now inactive");
-      }
-      if (document.visibilityState === "visible") {
-        channel.onmessage = (event) => {
-          sessionStorage.setItem("grayscale", event.data.grayscale);
-        };
-
-        init();
-        console.log("Tab is now active again");
-      }
+    window.addEventListener("focus", function () {
+      console.log("focus");
+      init();
     });
 
     const mouseDownHandler = (e) => {
       console.log("mousedown", e);
       grayscale = Math.min(1, grayscale + delta);
       console.log("Grayscale", grayscale);
-      sessionStorage.setItem("grayscale", grayscale);
+      localStorage.setItem("grayscale", grayscale);
     };
 
     // listen to scroll
@@ -44,7 +34,7 @@
       scrollTimeout = setTimeout(function () {
         isScrolling = false;
         grayscale = Math.min(1, grayscale + delta);
-        sessionStorage.setItem("grayscale", grayscale);
+        localStorage.setItem("grayscale", grayscale);
         console.log("Grayscale", grayscale);
       }, 100);
     };
@@ -58,8 +48,26 @@
     };
   });
 
+  const initTabCount = () => {
+    let count = parseInt(localStorage.getItem("tabCount") || "0");
+    localStorage.setItem("tabCount", (count + 1).toString());
+    window.addEventListener("beforeunload", decrementTabCount);
+  };
+
+  const decrementTabCount = () => {
+    let count = parseInt(localStorage.getItem("tabCount") || "0") - 1;
+    localStorage.setItem("tabCount", count.toString());
+    if (count === 0) {
+      localStorage.removeItem("grayscale");
+    }
+  };
+
   const init = () => {
-    grayscale = parseFloat(sessionStorage.getItem("grayscale") ?? "0") || 0;
+    grayscale = Math.max(
+      parseFloat(localStorage.getItem("grayscale") ?? "0") || 0,
+      grayscale
+    );
+    console.log("Grayscale", grayscale);
   };
 </script>
 

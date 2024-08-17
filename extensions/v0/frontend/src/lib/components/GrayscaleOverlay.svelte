@@ -8,7 +8,23 @@
   let scrollTimeout = null;
 
   onMount(() => {
-    grayscale = parseFloat(sessionStorage.getItem("grayscale") ?? "0") || 0;
+    init();
+    const channel = new BroadcastChannel("grayscale_intervention_channel");
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") {
+        channel.postMessage({ grayscale: sessionStorage.grayscale });
+        console.log("Tab is now inactive");
+      }
+      if (document.visibilityState === "visible") {
+        channel.onmessage = (event) => {
+          sessionStorage.setItem("grayscale", event.data.grayscale);
+        };
+
+        init();
+        console.log("Tab is now active again");
+      }
+    });
 
     const mouseDownHandler = (e) => {
       console.log("mousedown", e);
@@ -41,6 +57,10 @@
       window.removeEventListener("mousedown", mouseDownHandler);
     };
   });
+
+  const init = () => {
+    grayscale = parseFloat(sessionStorage.getItem("grayscale") ?? "0") || 0;
+  };
 </script>
 
 <div

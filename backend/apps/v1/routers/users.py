@@ -70,7 +70,7 @@ def signup(form_data: UserSignUpForm):
         if user_count <= MAX_PARTICIPANTS_COUNT:
             try:
                 send_webhook(
-                    f'Invisible Interventions: User #{user_count} has signed up!\nEmail: {form_data.email}\nID: {form_data.external_id}'
+                    f"Invisible Interventions: User #{user_count} has signed up!\nEmail: {form_data.email}\nID: {form_data.external_id}"
                 )
                 return Users.insert_new_user(form_data)
             except Exception as e:
@@ -126,3 +126,15 @@ def submit_exit_survey(form_data: ExitSurvey):
             detail="Something went wrong, please contact us via (jaeryang_baek@sfu.ca): User ID not found",
         )
 
+
+#########################
+# ExitSurveyStatus
+#########################
+
+
+@router.get("{id}/survey/exit")
+def get_exit_survey_status():
+    user = Users.get_user_by_id(id)
+    if user.exit_survey:
+        return {"status": True}
+    return {"status": False}

@@ -32,6 +32,27 @@
   };
 
   onMount(() => {
+    init();
+
+    const channel = new BroadcastChannel("timer_intervention_channel");
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") {
+        channel.postMessage({ timer_duration: sessionStorage.timer_duration });
+        console.log("Tab is now inactive");
+      }
+      if (document.visibilityState === "visible") {
+        channel.onmessage = (event) => {
+          sessionStorage.setItem("timer_duration", event.data.timer_duration);
+        };
+
+        init();
+        console.log("Tab is now active again");
+      }
+    });
+  });
+
+  const init = () => {
     if (
       sessionStorage.timer_duration &&
       parseInt(sessionStorage.timer_duration) > 0
@@ -43,7 +64,7 @@
     } else {
       showTimerModal = true;
     }
-  });
+  };
 
   const handleConfirm = (_duration) => {
     showTimerModal = false;

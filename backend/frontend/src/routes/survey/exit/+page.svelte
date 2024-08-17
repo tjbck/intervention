@@ -9,7 +9,26 @@
 
 	let formData = {
 		date: dayjs().format('YYYY-MM-DD'),
-		email: ''
+		email: '',
+		helpfulness: '',
+		continuedUse: '',
+		socialMediaEnjoyment: '',
+		usagePatternChange: '',
+		primaryGoal: '',
+		goalAchievement: '',
+		specificChanges: '',
+		concentration: '',
+		productivity: '',
+		usability: '',
+		designEngagement: '',
+		selfAwareness: '',
+		control: '',
+		intrusiveness: '',
+		wellBeingImprovement: '',
+		likedMost: '',
+		dislikedMost: '',
+		improvementSuggestions: '',
+		additionalComments: ''
 	};
 
 	const submitHandler = async () => {
@@ -96,6 +115,190 @@
 				</div>
 			</div>
 
+			<div class="my-6">
+				<label for="helpfulness" class="block mb-2 text-sm text-gray-900">How helpful did you find the intervention in reducing your screen time?</label>
+				<select id="helpfulness" bind:value={formData.helpfulness} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Not at all helpful">Not at all helpful</option>
+					<option value="Slightly helpful">Slightly helpful</option>
+					<option value="Moderately helpful">Moderately helpful</option>
+					<option value="Very helpful">Very helpful</option>
+					<option value="Extremely helpful">Extremely helpful</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="continuedUse" class="block mb-2 text-sm text-gray-900">How likely are you to continue using the intervention after the study?</label>
+				<select id="continuedUse" bind:value={formData.continuedUse} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Not at all likely">Not at all likely</option>
+					<option value="Slightly likely">Slightly likely</option>
+					<option value="Moderately likely">Moderately likely</option>
+					<option value="Very likely">Very likely</option>
+					<option value="Extremely likely">Extremely likely</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="socialMediaEnjoyment" class="block mb-2 text-sm text-gray-900">How did the intervention impact your enjoyment of social media?</label>
+				<select id="socialMediaEnjoyment" bind:value={formData.socialMediaEnjoyment} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Significantly decreased">Significantly decreased</option>
+					<option value="Slightly decreased">Slightly decreased</option>
+					<option value="No change">No change</option>
+					<option value="Slightly increased">Slightly increased</option>
+					<option value="Significantly increased">Significantly increased</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="usagePatternChange" class="block mb-2 text-sm text-gray-900">Did the intervention change your usage pattern on social media? If yes, how?</label>
+				<textarea id="usagePatternChange" bind:value={formData.usagePatternChange} class="block w-full p-3" required></textarea>
+			</div>
+
+			<div class="my-6">
+				<label for="primaryGoal" class="block mb-2 text-sm text-gray-900">What was your primary goal with the usage of this intervention?</label>
+				<select id="primaryGoal" bind:value={formData.primaryGoal} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Reduce screen time">Reduce screen time</option>
+					<option value="Increase productivity">Increase productivity</option>
+					<option value="Improve mental well-being">Improve mental well-being</option>
+					<option value="Other">Other</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="goalAchievement" class="block mb-2 text-sm text-gray-900">To what extent did you achieve your goal?</label>
+				<select id="goalAchievement" bind:value={formData.goalAchievement} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Not at all">Not at all</option>
+					<option value="Slightly">Slightly</option>
+					<option value="Moderately">Moderately</option>
+					<option value="Very much">Very much</option>
+					<option value="Completely">Completely</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="specificChanges" class="block mb-2 text-sm text-gray-900">What specific changes did you notice in your screen time or digital habits?</label>
+				<textarea id="specificChanges" bind:value={formData.specificChanges} class="block w-full p-3" required></textarea>
+			</div>
+
+			<div class="my-6">
+				<label for="concentration" class="block mb-2 text-sm text-gray-900">Rate your perceived concentration while using the intervention compared to before.</label>
+				<select id="concentration" bind:value={formData.concentration} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Significantly worse">Significantly worse</option>
+					<option value="Worse">Worse</option>
+					<option value="No change">No change</option>
+					<option value="Better">Better</option>
+					<option value="Significantly better">Significantly better</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="productivity" class="block mb-2 text-sm text-gray-900">How would you rate your productivity with the intervention compared to before?</label>
+				<select id="productivity" bind:value={formData.productivity} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Significantly decreased">Significantly decreased</option>
+					<option value="Slightly decreased">Slightly decreased</option>
+					<option value="No change">No change</option>
+					<option value="Slightly increased">Slightly increased</option>
+					<option value="Significantly increased">Significantly increased</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="usability" class="block mb-2 text-sm text-gray-900">How easy or difficult was it to use the intervention?</label>
+				<select id="usability" bind:value={formData.usability} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Very difficult">Very difficult</option>
+					<option value="Difficult">Difficult</option>
+					<option value="Neutral">Neutral</option>
+					<option value="Easy">Easy</option>
+					<option value="Very easy">Very easy</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="designEngagement" class="block mb-2 text-sm text-gray-900">How attractive or engaging did you find the intervention design?</label>
+				<select id="designEngagement" bind:value={formData.designEngagement} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Very unattractive">Very unattractive</option>
+					<option value="Unattractive">Unattractive</option>
+					<option value="Neutral">Neutral</option>
+					<option value="Attractive">Attractive</option>
+					<option value="Very attractive">Very attractive</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="selfAwareness" class="block mb-2 text-sm text-gray-900">Did the intervention make you more aware of your digital habits?</label>
+				<select id="selfAwareness" bind:value={formData.selfAwareness} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Not at all">Not at all</option>
+					<option value="Slightly">Slightly</option>
+					<option value="Moderately">Moderately</option>
+					<option value="Very much">Very much</option>
+					<option value="Completely">Completely</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="control" class="block mb-2 text-sm text-gray-900">How much control did you feel you had over your social media use with the intervention?</label>
+				<select id="control" bind:value={formData.control} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="No control">No control</option>
+					<option value="Little control">Little control</option>
+					<option value="Moderate control">Moderate control</option>
+					<option value="Significant control">Significant control</option>
+					<option value="Complete control">Complete control</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="intrusiveness" class="block mb-2 text-sm text-gray-900">How intrusive did you find the intervention?</label>
+				<select id="intrusiveness" bind:value={formData.intrusiveness} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="Not intrusive at all">Not intrusive at all</option>
+					<option value="Slightly intrusive">Slightly intrusive</option>
+					<option value="Moderately intrusive">Moderately intrusive</option>
+					<option value="Very intrusive">Very intrusive</option>
+					<option value="Extremely intrusive">Extremely intrusive</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="wellBeingImprovement" class="block mb-2 text-sm text-gray-900">Did you perceive any improvement in your general well-being while using the intervention?</label>
+				<select id="wellBeingImprovement" bind:value={formData.wellBeingImprovement} class="block w-full p-3" required>
+					<option value="" disabled>Select an option</option>
+					<option value="No improvement">No improvement</option>
+					<option value="Slight improvement">Slight improvement</option>
+					<option value="Moderate improvement">Moderate improvement</option>
+					<option value="Significant improvement">Significant improvement</option>
+					<option value="Complete improvement">Complete improvement</option>
+				</select>
+			</div>
+
+			<div class="my-6">
+				<label for="likedMost" class="block mb-2 text-sm text-gray-900">What did you like most about the intervention?</label>
+				<textarea id="likedMost" bind:value={formData.likedMost} class="block w-full p-3" required></textarea>
+			</div>
+
+			<div class="my-6">
+				<label for="dislikedMost" class="block mb-2 text-sm text-gray-900">What did you dislike most about the intervention?</label>
+				<textarea id="dislikedMost" bind:value={formData.dislikedMost} class="block w-full p-3" required></textarea>
+			</div>
+
+			<div class="my-6">
+				<label for="improvementSuggestions" class="block mb-2 text-sm text-gray-900">Do you have any suggestions for improving the intervention?</label>
+				<textarea id="improvementSuggestions" bind:value={formData.improvementSuggestions} class="block w-full p-3" required></textarea>
+			</div>
+
+			<div class="my-6">
+				<label for="additionalComments" class="block mb-2 text-sm text-gray-900">Any other comments or feedback you would like to share?</label>
+				<textarea id="additionalComments" bind:value={formData.additionalComments} class="block w-full p-3" required></textarea>
+			</div>
 			<button
 				type="submit"
 				class="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"

@@ -5,6 +5,8 @@
 	import ConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
 	import { copyToClipboard } from '$lib/utils';
 
+	let eligibilityCheckboxes = [];
+
 	let checkboxElement = null;
 	let reviewed = null;
 
@@ -18,7 +20,6 @@
 	let user = null;
 	let formData = {
 		date: dayjs().format('YYYY-MM-DD'),
-		name: '',
 		email: '',
 		externalId: ''
 	};
@@ -28,9 +29,9 @@
 	};
 
 	const submitForm = async () => {
-		console.log(checkboxElement);
-		if (checkboxElement.checked) {
-			if (formData.email !== '' && formData.name !== '') {
+		const allChecked = eligibilityCheckboxes.every((checkbox) => checkbox.checked);
+		if (allChecked && checkboxElement.checked) {
+			if (formData.email !== '') {
 				const res = await fetch(`${API_BASE_URL}/users/signup`, {
 					method: 'POST',
 					headers: {
@@ -40,7 +41,6 @@
 					body: JSON.stringify({
 						date: formData.date,
 						email: formData.email,
-						name: formData.name,
 						external_id: formData.externalId
 					})
 				})
@@ -63,7 +63,7 @@
 				toast.error('Please complete all required form inputs.');
 			}
 		} else {
-			toast.error('Please consent to the consent form.');
+			toast.error('Please consent to the consent form and ensure all eligibility requirements are met.');
 		}
 	};
 </script>
@@ -103,7 +103,7 @@
 		<div class="">
 			<div class="text-center text-gray-700 flex flex-col justify-center">
 				<div class=" my-20">
-					<div class="text-xl font-semibold">Hello, {user?.name ?? 'User'}</div>
+					<div class="text-xl font-semibold">Hello, {user?.email ?? 'User'}</div>
 					<div class="text-lg">Thanks for signing up!</div>
 
 					<div class=" my-3">
@@ -135,6 +135,19 @@
 							</button>
 						</div>
 					</div>
+					<div class=" my-3">
+						<div class="flex justify-center">
+							<button
+								class="flex justify-center gap-2 items-center text-center text-sm font-semibold rounded-full py-2 px-5 text-blue-800 bg-blue-100 hover:bg-blue-200 transition-all cursor-pointer"
+								on:click={() => {
+									window.open('https://youtu.be/VapVPCmOeLU?si=3_7KtGbFBkm5-ykk', '_blank');
+								}}
+							>
+								<div>Video tutorial to setup extension</div>
+							</button>
+						</div>
+					</div>
+					
 					<div class="text-sm">
 						Once you have downloaded the extension, please follow the instructions below to install
 						it.
@@ -221,23 +234,6 @@
 					required
 				/>
 			</div>
-
-			<div class=" my-6">
-				<label for="name" class="block mb-2 text-sm text-gray-900">Participant Name</label>
-				<input
-					type="text"
-					id="name"
-					bind:value={formData.name}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
-					placeholder="Your full name"
-					required
-					autocomplete="name"
-				/>
-				<div class="mt-2 text-xs text-gray-500 text-right">
-					<span>REQUIRED</span>
-				</div>
-			</div>
-
 			<div class=" my-6">
 				<label for="email" class="block mb-2 text-sm text-gray-900">Participant Email</label>
 				<input
@@ -253,7 +249,52 @@
 					<span>REQUIRED</span>
 				</div>
 			</div>
-
+			<div class="my-6">
+				<label for="eligibility" class="block mb-2 text-sm text-gray-900">Eligibility Requirements</label>
+				<div class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg p-3">
+					<ul class="pl-5">
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[0] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Regular user of Chrome browser</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[1] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Access social media websites from a computer</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[2] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Use at least one of the following (Reddit, Twitter (X), Instagram, Facebook) for at least 30 minutes every day</span>
+						</li>
+						<li>
+							<input
+								type="checkbox"
+								bind:this={el => eligibilityCheckboxes[3] = el}
+								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+								required
+							/>
+							<span>Can participate in the study for 2 weeks</span>
+						</li>
+					</ul>
+				</div>
+				<div class="mt-2 text-xs text-gray-500 text-right">
+					<span>REQUIRED</span>
+				</div>
+			</div>
 			<!-- <div class=" my-6">
 				<label for="name" class="block mb-2 text-sm text-gray-900"
 					>Participant ID (Prolific ID)</label

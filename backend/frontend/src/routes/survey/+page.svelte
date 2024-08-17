@@ -14,11 +14,9 @@
 		age: '',
 		gender: '', // 'M','F','N','OTHER','NA'
 		race: [], // "B", "EA", "I-F", "I-M", "I-I", "I-OTHER", "I-NA", "L", "M", "SA", "W", "OTHER", "NA"
-		income_bracket: '', // "0", "10", "25", "50", "75", "100", "150", "NA"
 		app_usage_frequency: '', // "1", "2", "3", "4"
 		mindless_usage_frequency: '', // "1", "2", "3", "4"
 		average_mindless_usage_duration_minutes: '',
-		social_media_health_impact: '' // "1", "2", "3"
 	};
 
 	const submitHandler = async () => {
@@ -31,11 +29,9 @@
 			formData.age !== '' &&
 			formData.gender !== '' &&
 			formData.race.length > 0 &&
-			formData.income_bracket !== '' &&
 			formData.app_usage_frequency !== '' &&
 			formData.mindless_usage_frequency !== '' &&
 			formData.average_mindless_usage_duration_minutes !== '' &&
-			formData.social_media_health_impact !== ''
 		) {
 			console.log({ ...formData, race: formData.race.join(',') });
 
@@ -298,93 +294,6 @@
 					<span>REQUIRED</span>
 				</div>
 			</div>
-
-			<div class=" my-6">
-				<label for="income-bracket" class="block mb-2 text-sm text-gray-900"
-					>Which of these describes your income last year?
-				</label>
-				<div id="income-bracket" class="mt-5">
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'0'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$0 to $9,999</div>
-					</div>
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'10'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$10,000 to $24,999</div>
-					</div>
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'25'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$25,000 to 49,999</div>
-					</div>
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'50'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$50,000 to 74,999</div>
-					</div>
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'75'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$75,000 to 99,999</div>
-					</div>
-
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'100'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$100,000 to 149,999</div>
-					</div>
-
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'150'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">$150,000 and greater</div>
-					</div>
-
-					<div class="flex items-center">
-						<input
-							type="radio"
-							bind:group={formData.income_bracket}
-							value={'NA'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">Prefer not to answer</div>
-					</div>
-				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
-					<span>REQUIRED</span>
-				</div>
-			</div>
-
 			<div class=" my-6">
 				<label for="app-usage-frequency" class="block mb-2 text-sm text-gray-900"
 					>How often do you use Social Media?
@@ -498,53 +407,7 @@
 					<span>REQUIRED</span>
 				</div>
 			</div>
-
-			<div class=" my-6">
-				<label for="social-media-health-impact" class="block mb-2 text-sm text-gray-900"
-					>How do you feel your social media usage affects your physical and mental health and
-					well-being?</label
-				>
-				<div id="social-media-health-impact" class="mt-5">
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.social_media_health_impact}
-							value={'1'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
-							Social media positively affects my health
-						</div>
-					</div>
-					<div class="flex items-center mb-2">
-						<input
-							type="radio"
-							bind:group={formData.social_media_health_impact}
-							value={'2'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
-							Social media has no effect on my health
-						</div>
-					</div>
-					<div class="flex items-center">
-						<input
-							type="radio"
-							bind:group={formData.social_media_health_impact}
-							value={'3'}
-							class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-						/>
-						<div class="ml-2 text-sm font-medium text-gray-700">
-							Social media negatively affects my health
-						</div>
-					</div>
-				</div>
-				<div class="mt-2 text-xs text-gray-500 text-right">
-					<span>REQUIRED</span>
-				</div>
-			</div>
 			<hr />
-
 			<div class=" my-6">
 				<div class=" text-gray-600 text-sm">
 					If you would like to reschedule or cancel your participation in the study for any reason,

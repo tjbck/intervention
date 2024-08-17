@@ -18,16 +18,33 @@ class Survey(BaseModel):
     age: str | int
     gender: str
     race: str
-    income_bracket: str
     app_usage_frequency: str
     mindless_usage_frequency: str
     average_mindless_usage_duration_minutes: str | int
-    social_media_health_impact: str
     model_config = ConfigDict(extra="allow")
 
 class ExitSurvey(BaseModel):
     email: str
     date: str
+    helpfulness: str
+    continuedUse: str
+    socialMediaEnjoyment: str
+    usagePatternChange: str
+    primaryGoal: str
+    goalAchievement: str
+    specificChanges: str
+    concentration: str
+    productivity: str
+    usability: str
+    designEngagement: str
+    selfAwareness: str
+    control: str
+    intrusiveness: str
+    wellBeingImprovement: str
+    likedMost: str 
+    dislikedMost: str
+    improvementSuggestions: Optional[str] 
+    additionalComments: Optional[str]  
     model_config = ConfigDict(extra="allow")
 
 
@@ -35,7 +52,6 @@ class UserModel(BaseModel):
     id: str
     external_id: Optional[str] = None
     email: str
-    name: str = ""
     createdAt: int
     survey: Optional[Survey] = None
     exit_survey: Optional[ExitSurvey] = None
@@ -49,7 +65,6 @@ class UserModel(BaseModel):
 class UserSignUpForm(BaseModel):
     external_id: Optional[str] = None
     email: str
-    name: str = ""
 
 
 class UsersTable:

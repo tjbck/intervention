@@ -72,7 +72,9 @@
 
 <div class="mx-4 mb-20">
 	<div class="">
-		<img src="/sfu.png" alt="sfu logo" class="mx-auto" />
+		<div class="flex justify-center">
+			<img src="/sfu.png" alt="sfu logo" />
+		</div>
 		<div class="text-xl text-gray-600 font-semibold">Post-Experiment Survey</div>
 		<div class="mt-2 text-sm text-gray-600">
 			Comparing Invisible Interventions with Empowering Interventions: How Can Reduced Visibility or

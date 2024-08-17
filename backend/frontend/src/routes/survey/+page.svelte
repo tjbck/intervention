@@ -16,7 +16,7 @@
 		race: [], // "B", "EA", "I-F", "I-M", "I-I", "I-OTHER", "I-NA", "L", "M", "SA", "W", "OTHER", "NA"
 		app_usage_frequency: '', // "1", "2", "3", "4"
 		mindless_usage_frequency: '', // "1", "2", "3", "4"
-		average_mindless_usage_duration_minutes: '',
+		average_mindless_usage_duration_minutes: ''
 	};
 
 	const submitHandler = async () => {
@@ -31,7 +31,7 @@
 			formData.race.length > 0 &&
 			formData.app_usage_frequency !== '' &&
 			formData.mindless_usage_frequency !== '' &&
-			formData.average_mindless_usage_duration_minutes !== '' &&
+			formData.average_mindless_usage_duration_minutes !== ''
 		) {
 			console.log({ ...formData, race: formData.race.join(',') });
 

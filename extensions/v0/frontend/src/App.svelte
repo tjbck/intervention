@@ -19,6 +19,8 @@
 
   let installation_timestamp = null;
 
+  let message = "";
+
   onMount(async () => {
     console.log(import.meta.env.DEV);
 
@@ -99,15 +101,15 @@
       console.log(activatedBeforeStatus);
       if (!activatedBeforeStatus) {
         Storage.set("activated", true);
-        let activationMessage = "The intervention is currently active";
+        message = "The intervention is currently active";
         if (extension_id === "timer") {
-          activationMessage = `For the next ${DAYS} days, every time you access Social Media websites, you will be prompted to set a time limit for yourself. The remaining time is visible on the bottom right-hand corner of the screen. Once your time is up, you will be prompted to close the app, but you may alternatively set an additional time limit for yourself and continue using them.`;
+          message = `For the next ${DAYS} days, every time you access Social Media websites, you will be prompted to set a time limit for yourself. The remaining time is visible on the bottom right-hand corner of the screen. Once your time is up, you will be prompted to close the app, but you may alternatively set an additional time limit for yourself and continue using them.`;
         } else if (extension_id === "gray") {
-          activationMessage = `For the next ${DAYS} days, with each interaction with the website, your screen will slowly turn grayscale. This visual cue is designed to raise awareness of your screen time and promote a healthier relationship with the website.`;
+          message = `For the next ${DAYS} days, with each interaction with the website, your screen will slowly turn grayscale. This visual cue is designed to raise awareness of your screen time and promote a healthier relationship with the website.`;
         } else if (extension_id === "tap") {
-          activationMessage = `For the next ${DAYS} days, traditional scrolling methods will be disabled, and you can now navigate through the website by using the arrow up/down keys. This is designed to make you more aware of your interactions with the website and promote a healthier relationship with it.`;
+          message = `For the next ${DAYS} days, traditional scrolling methods will be disabled, and you can now navigate through the website by using the arrow up/down keys. This is designed to make you more aware of your interactions with the website and promote a healthier relationship with it.`;
         }
-        alert(activationMessage);
+        alert(message);
       } else {
         console.log("The intervention is currently active");
       }
@@ -118,9 +120,9 @@
       console.log(disabledBeforeStatus);
       if (!disabledBeforeStatus) {
         Storage.set("disabled", true);
-        alert(
-          `For the next ${DAYS} days, you will continue to use the website without any interventions, please continue to use the website as you normally would.`
-        );
+
+        message = `For the next ${DAYS} days, you will continue to use the website without any interventions, please continue to use the website as you normally would.`;
+        alert(message);
       } else {
         console.log("The intervention is currently disabled");
       }
@@ -140,7 +142,7 @@
 
 <div class="overlay">
   <div class="status-display-container">
-    <Tooltip content="This is a tooltip" placement="top">
+    <Tooltip content={message} placement="top">
       <div
         class={extension_id === "none" || extension_id === null
           ? "status-display-inactive"

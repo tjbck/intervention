@@ -5,9 +5,9 @@
 	import ConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
 	import { copyToClipboard } from '$lib/utils';
 
-	let eligibilityCheckboxes = [];
+	let requirementCheckboxElement = null;
+	let consentFormCheckboxElement = null;
 
-	let checkboxElement = null;
 	let reviewed = null;
 
 	$: if (reviewed == false) {
@@ -29,8 +29,7 @@
 	};
 
 	const submitForm = async () => {
-		const allChecked = eligibilityCheckboxes.every((checkbox) => checkbox.checked);
-		if (allChecked && checkboxElement.checked) {
+		if (requirementCheckboxElement.checked && consentFormCheckboxElement.checked) {
 			if (formData.email !== '') {
 				const res = await fetch(`${API_BASE_URL}/users/signup`, {
 					method: 'POST',
@@ -63,7 +62,9 @@
 				toast.error('Please complete all required form inputs.');
 			}
 		} else {
-			toast.error('Please consent to the consent form and ensure all eligibility requirements are met.');
+			toast.error(
+				'Please consent to the consent form and ensure all eligibility requirements are met.'
+			);
 		}
 	};
 </script>
@@ -86,7 +87,7 @@
 
 			<div class=" my-2 text-xs">
 				Please sign up and submit the form only if you are fully committed to participating in the
-				study. 
+				study.
 			</div>
 
 			<div class=" font-semibold">Ensure your commitment before proceeding.</div>
@@ -147,7 +148,7 @@
 							</button>
 						</div>
 					</div>
-					
+
 					<div class="text-sm">
 						Once you have downloaded the extension, please follow the instructions below to install
 						it.
@@ -209,8 +210,8 @@
 						</ol>
 
 						We will be closely monitoring your usage, and failure to use the app every day will
-						result in automatic disqualification. Ensure you use the app for at least 30 minutes each day
-						throughout the study to remain eligible for compensation.
+						result in automatic disqualification. Ensure you use the app for at least 30 minutes
+						each day throughout the study to remain eligible for compensation.
 					</div>
 				</div>
 			</div>
@@ -250,46 +251,39 @@
 				</div>
 			</div>
 			<div class="my-6">
-				<label for="eligibility" class="block mb-2 text-sm text-gray-900">Eligibility Requirements</label>
+				<label for="eligibility" class="block mb-2 text-sm text-gray-900"
+					>Eligibility Requirements</label
+				>
 				<div class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg p-3">
-					<ul class="pl-5">
+					<ul class="pl-5 font-medium">
 						<li>
-							<input
-								type="checkbox"
-								bind:this={el => eligibilityCheckboxes[0] = el}
-								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-								required
-							/>
-							<span>Regular user of Chrome browser</span>
+							· <span>Regular user of Chrome browser</span>
 						</li>
 						<li>
-							<input
-								type="checkbox"
-								bind:this={el => eligibilityCheckboxes[1] = el}
-								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-								required
-							/>
-							<span>Access social media websites from a computer</span>
+							· <span>Access social media websites from a computer</span>
 						</li>
 						<li>
-							<input
-								type="checkbox"
-								bind:this={el => eligibilityCheckboxes[2] = el}
-								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-								required
-							/>
-							<span>Use at least one of the following (Reddit, Twitter (X), Instagram, Facebook) for at least 30 minutes every day</span>
+							· <span
+								>Use at least one of the following (Reddit, Twitter (X), Instagram, Facebook) for at
+								least 30 minutes every day</span
+							>
 						</li>
 						<li>
-							<input
-								type="checkbox"
-								bind:this={el => eligibilityCheckboxes[3] = el}
-								class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-								required
-							/>
-							<span>Can participate in the study for 2 weeks</span>
+							· <span>Can participate in the study for 2 weeks</span>
 						</li>
 					</ul>
+				</div>
+
+				<div class="flex text-sm text-gray-600">
+					<input
+						type="checkbox"
+						bind:this={requirementCheckboxElement}
+						class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+						required
+					/>
+					<div class=" mt-1">
+						I meet all the eligibility requirements and am willing to participate in the study.
+					</div>
 				</div>
 				<div class="mt-2 text-xs text-gray-500 text-right">
 					<span>REQUIRED</span>
@@ -323,7 +317,7 @@
 				<div class="flex text-sm text-gray-600">
 					<input
 						type="checkbox"
-						bind:this={checkboxElement}
+						bind:this={consentFormCheckboxElement}
 						class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
 						required
 					/>

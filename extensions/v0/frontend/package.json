@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.11",
-    "svelte-sonner": "^0.3.27"
+    "svelte-sonner": "^0.3.27",
+    "tippy.js": "^6.3.7"
   }
 }

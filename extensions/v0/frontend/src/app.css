@@ -46,9 +46,21 @@
 }
 
 .timer-display-container {
-  @apply flex text-xs items-center gap-1 absolute bottom-0 right-0 p-1 pointer-events-auto;
+  @apply flex text-xs items-center gap-1 absolute bottom-5 right-0 p-1 pointer-events-auto;
 }
 
 .timer-display {
-  @apply px-3 py-1 rounded-lg bg-white text-gray-700 font-medium;
+  @apply px-2.5 py-0.5 rounded-lg bg-white text-gray-700 font-medium;
+}
+
+.status-display-container {
+  @apply flex text-xs items-center gap-1 absolute bottom-0 right-0 p-1 pointer-events-auto;
+}
+
+.status-display-active {
+  @apply px-2.5 py-0.5 rounded-lg bg-green-200 text-green-700 font-medium;
+}
+
+.status-display-inactive {
+  @apply px-2.5 py-0.5 rounded-lg bg-gray-200 text-gray-700 font-medium;
 }

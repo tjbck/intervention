@@ -62,7 +62,7 @@
 <div class="overlay">
   <div class="timer-display-container">
     <div class="timer-display">
-      Time remaining: {formatTime(remainingTime)}
+      Timer: {formatTime(remainingTime)}
     </div>
   </div>
 </div>

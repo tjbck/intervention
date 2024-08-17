@@ -135,6 +135,19 @@
 							</button>
 						</div>
 					</div>
+					<div class=" my-3">
+						<div class="flex justify-center">
+							<button
+								class="flex justify-center gap-2 items-center text-center text-sm font-semibold rounded-full py-2 px-5 text-blue-800 bg-blue-100 hover:bg-blue-200 transition-all cursor-pointer"
+								on:click={() => {
+									window.open('https://youtu.be/VapVPCmOeLU?si=3_7KtGbFBkm5-ykk', '_blank');
+								}}
+							>
+								<div>Video tutorial to setup extension</div>
+							</button>
+						</div>
+					</div>
+					
 					<div class="text-sm">
 						Once you have downloaded the extension, please follow the instructions below to install
 						it.

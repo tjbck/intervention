@@ -19,7 +19,7 @@ ENV = os.environ.get("ENV", "dev")
 
 
 BACKEND_DIR = Path(__file__).parent  # the path containing this file
-FRONTEND_BUILD_DIR = Path(BACKEND_DIR / "../extensions/v0/build").resolve()
+FRONTEND_BUILD_DIR = Path(BACKEND_DIR / "frontend" / "build").resolve()
 STATIC_DIR = Path(BACKEND_DIR / "static").resolve()
 
 ####################################

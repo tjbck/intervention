@@ -79,7 +79,7 @@
                 class="timer-input"
                 type="number"
                 min="0"
-                max="0"
+                max="2"
                 step="1"
                 required
               />
@@ -94,7 +94,7 @@
                 class="timer-input"
                 type="number"
                 min="0"
-                max="20"
+                max="59"
                 step="1"
                 required
               />

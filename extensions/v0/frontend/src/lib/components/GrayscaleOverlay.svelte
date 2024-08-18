@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let delta = 0.08;
+  export let delta = 0.01;
   let grayscale = 0;
 
   let isScrolling = false;
@@ -36,7 +36,7 @@
         grayscale = Math.min(1, grayscale + delta);
         localStorage.setItem("grayscale", grayscale);
         console.log("Grayscale", grayscale);
-      }, 100);
+      }, 75);
     };
 
     window.addEventListener("wheel", scrollHandler);

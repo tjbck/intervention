@@ -21,7 +21,6 @@
 		concentration: '',
 		productivity: '',
 		usability: '',
-		designEngagement: '',
 		selfAwareness: '',
 		control: '',
 		intrusiveness: '',
@@ -265,8 +264,7 @@
 
 			<div class="my-6">
 				<label for="concentration" class="block mb-2 text-sm text-gray-900"
-					>Rate your perceived concentration while using the intervention compared to before.</label
-				>
+					>Rate your perceived ability to concentrate on work/school related tasks while using the intervention compared to before.</label>
 				<select
 					id="concentration"
 					bind:value={formData.concentration}
@@ -331,30 +329,6 @@
 					<span>REQUIRED</span>
 				</div>
 			</div>
-
-			<div class="my-6">
-				<label for="designEngagement" class="block mb-2 text-sm text-gray-900"
-					>How attractive or engaging did you find the intervention design?</label
-				>
-				<select
-					id="designEngagement"
-					bind:value={formData.designEngagement}
-					class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:text-gray-500 disabled:bg-gray-200 block w-full p-3"
-					required
-				>
-					<option value="" disabled>Select an option</option>
-					<option value="Very unattractive">Very unattractive</option>
-					<option value="Unattractive">Unattractive</option>
-					<option value="Neutral">Neutral</option>
-					<option value="Attractive">Attractive</option>
-					<option value="Very attractive">Very attractive</option>
-				</select>
-
-				<div class="mt-2 text-xs text-gray-500 text-right">
-					<span>REQUIRED</span>
-				</div>
-			</div>
-
 			<div class="my-6">
 				<label for="selfAwareness" class="block mb-2 text-sm text-gray-900"
 					>Did the intervention make you more aware of your digital habits?</label

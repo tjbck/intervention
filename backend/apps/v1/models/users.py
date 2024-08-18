@@ -36,7 +36,6 @@ class ExitSurvey(BaseModel):
     concentration: str
     productivity: str
     usability: str
-    designEngagement: str
     selfAwareness: str
     control: str
     intrusiveness: str

@@ -22,6 +22,13 @@
   let hourValue = "0";
   let minuteValue = "20";
 
+  const submitHandler = () => {
+    show = false;
+
+    const minutes = parseInt(hourValue) * 60 + parseInt(minuteValue);
+    dispatch("confirm", minutes);
+  };
+
   onMount(() => {
     mounted = true;
   });
@@ -50,20 +57,16 @@
         e.stopPropagation();
       }}
     >
-      <div class="px-[1.75rem] py-6">
+      <form
+        class="px-[1.75rem] py-6"
+        on:submit|preventDefault={() => {
+          submitHandler();
+        }}
+      >
         <div class="flex justify-between items-center">
           <div class="timer-modal-title self-center">Timer</div>
 
-          <button
-            class="timer-set-button"
-            on:click={() => {
-              show = false;
-
-              const minutes = parseInt(hourValue) * 60 + parseInt(minuteValue);
-              dispatch("confirm", minutes);
-            }}
-            type="button"
-          >
+          <button class="timer-set-button" type="submit">
             {confirmLabel}
           </button>
         </div>
@@ -103,7 +106,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 {/if}

@@ -114,7 +114,7 @@
 						</li>
 					</ol>
 					We will be closely monitoring your usage, and failure to use the app every day will result
-					in automatic disqualification. Ensure you use the app for at least 30 minutes each day throughout
+					in automatic disqualification. Ensure you use the app for at least 15 minutes each day throughout
 					the study to remain eligible for compensation.
 				</div>
 			</div>

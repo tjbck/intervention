@@ -23,6 +23,7 @@ class Survey(BaseModel):
     average_mindless_usage_duration_minutes: str | int
     model_config = ConfigDict(extra="allow")
 
+
 class ExitSurvey(BaseModel):
     email: str
     date: str
@@ -40,10 +41,10 @@ class ExitSurvey(BaseModel):
     control: str
     intrusiveness: str
     wellBeingImprovement: str
-    likedMost: str 
+    likedMost: str
     dislikedMost: str
-    improvementSuggestions: Optional[str] 
-    additionalComments: Optional[str]  
+    improvementSuggestions: Optional[str]
+    additionalComments: Optional[str]
     model_config = ConfigDict(extra="allow")
 
 
@@ -64,6 +65,7 @@ class UserModel(BaseModel):
 class UserSignUpForm(BaseModel):
     external_id: Optional[str] = None
     email: str
+    survey: Optional[Survey] = None
 
 
 class UsersTable:

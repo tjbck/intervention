@@ -8,6 +8,9 @@
 	let loading = false;
 	let submitted = false;
 
+	let requirementCheckboxElement = null;
+	let consentFormCheckboxElement = null;
+
 	let formData = {
 		date: dayjs().format('YYYY-MM-DD'),
 		email: '',
@@ -20,11 +23,10 @@
 	};
 
 	const submitHandler = async () => {
-		// TODO: validate formdata
-
 		loading = true;
-
 		if (
+			requirementCheckboxElement.checked &&
+			consentFormCheckboxElement.checked &&
 			formData.email !== '' &&
 			formData.age !== '' &&
 			formData.gender !== '' &&
@@ -35,13 +37,20 @@
 		) {
 			console.log({ ...formData, race: formData.race.join(',') });
 
-			const res = await fetch(`${API_BASE_URL}/users/survey`, {
+			const res = await fetch(`${API_BASE_URL}/users/signup`, {
 				method: 'POST',
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ ...formData, race: formData.race.join(',') })
+				body: JSON.stringify({
+					date: formData.date,
+					email: formData.email,
+					survey: {
+						...formData,
+						race: formData.race.join(',')
+					}
+				})
 			})
 				.then(async (res) => {
 					if (!res.ok) throw await res.json();
@@ -95,6 +104,76 @@
 		</div>
 	{:else}
 		<form on:submit|preventDefault={submitHandler}>
+			<div class="my-6">
+				<label for="eligibility" class="block mb-2 text-sm text-gray-900"
+					>Eligibility Requirements</label
+				>
+				<div class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg p-3">
+					<ul class="pl-5 font-medium">
+						<li>
+							· <span>Regular user of Chrome browser</span>
+						</li>
+						<li>
+							· <span>Access social media websites from a computer</span>
+						</li>
+						<li>
+							· <span
+								>Use at least one of the following (Reddit, Twitter (X), Instagram, Facebook) for at
+								least 15 minutes every day</span
+							>
+						</li>
+						<li>
+							· <span>Can participate in the study for 2 weeks</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="flex text-sm text-gray-600">
+					<input
+						type="checkbox"
+						bind:this={requirementCheckboxElement}
+						class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+						required
+					/>
+					<div class=" mt-1">
+						I meet all the eligibility requirements and am willing to participate in the study.
+					</div>
+				</div>
+				<div class="mt-2 text-xs text-gray-500 text-right">
+					<span>REQUIRED</span>
+				</div>
+			</div>
+
+			<div class=" my-6">
+				<label for="email" class="block mb-2 text-sm text-gray-900">Consent Form</label>
+
+				<div class=" text-sm text-purple-900 underline">
+					<a
+						href="https://drive.google.com/file/d/1uaMbJW2bvGACYqTpKc21L6F0vZDiQHsP/view?usp=sharing"
+						target="_blank">Consent Form Link</a
+					>
+				</div>
+				<div class="flex text-sm text-gray-600">
+					<input
+						type="checkbox"
+						bind:this={consentFormCheckboxElement}
+						class="w-4 h-4 mt-1.5 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+						required
+					/>
+					<div class=" mt-1">
+						I have thoroughly read and understood the content of the consent form for the research
+						study. I hereby acknowledge and agree with all the terms and conditions outlined in the
+						document. I willingly consent to participate in the research and understand my rights
+						and responsibilities as a participant. I agree to fully participate in the study.
+					</div>
+				</div>
+				<div class="mt-2 text-xs text-gray-500 text-right">
+					<span>REQUIRED</span>
+				</div>
+			</div>
+
+			<hr class="my-6" />
+
 			<div class=" my-6">
 				<label for="date" class="block mb-2 text-sm text-gray-900">Date</label>
 				<input

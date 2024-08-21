@@ -70,7 +70,7 @@ def signup(form_data: UserSignUpForm):
         if user_count <= MAX_PARTICIPANTS_COUNT:
             try:
                 send_webhook(
-                    f"Invisible Interventions: User #{user_count} has signed up!\nEmail: {form_data.email}\nID: {form_data.external_id}"
+                    f"Invisible Interventions: User #{user_count}  has started the study!\nEmail: {form_data.email}\n"
                 )
                 return Users.insert_new_user(form_data)
             except Exception as e:

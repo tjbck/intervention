@@ -59,7 +59,7 @@ def get_user_by_id(id: str):
 #########################
 
 
-@router.post("/signup")
+@router.post("/signup", response_model=UserModel)
 def signup(form_data: UserSignUpForm):
     print(form_data)
     user = Users.get_user_by_email(form_data.email)

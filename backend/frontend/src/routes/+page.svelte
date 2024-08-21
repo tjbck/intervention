@@ -109,7 +109,8 @@
 					<ol class=" list-decimal pl-5 font-medium py-2">
 						<li>You MUST use the extension every day during the study period.</li>
 						<li>
-							The total duration of usage over the 2 week period should exceed a minimum of 7 hours.
+							The total duration of usage over the 2 week period should exceed a minimum of 3.5
+							hours.
 						</li>
 					</ol>
 					We will be closely monitoring your usage, and failure to use the app every day will result

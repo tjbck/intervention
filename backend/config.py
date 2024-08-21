@@ -55,4 +55,4 @@ WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "")
 # MISCELLANEOUS
 ####################################
 
-MAX_PARTICIPANTS_COUNT = int(os.environ.get("MAX_PARTICIPANTS_COUNT", 60))
+MAX_PARTICIPANTS_COUNT = int(os.environ.get("MAX_PARTICIPANTS_COUNT", 120))
